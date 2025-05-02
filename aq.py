@@ -45,10 +45,20 @@ def covers(rule, example):
 
 
 
-def check_coverage(neg_set, complexes):
+def check_coverage_of_negative_examples(neg_set, complexes):
     filtered_rows = []
     for _, example in neg_set.iterrows():
         if any(covers(rule, example) for rule in complexes):
+            filtered_rows.append(example)
+
+    return pd.DataFrame(filtered_rows)
+
+
+
+def check_coverage_of_positive_examples(pos_set, complexes):
+    filtered_rows = []
+    for _, example in pos_set.iterrows():
+        if not any(covers(rule, example) for rule in complexes):
             filtered_rows.append(example)
 
     return pd.DataFrame(filtered_rows)
@@ -67,9 +77,7 @@ def compare_seeds(pos_seed, neg_seed):
 
 
 def generate_complex(compared_seeds, neg_seed, complex):
-    print('początek specialize complex')
     final_complex = []
-    print(f'dlugość complexu {len(complex)}')
 
     for comp in range(len(complex)):    
 
@@ -98,7 +106,7 @@ def evaluate_complexes_LEF(complexes, positive_examples, negative_examples, m=1)
     # Nadaj ocenę każdemu kompleksowi w==
     scored = []
     for idx, c in enumerate(complexes):
-        score = (f1(c), f2(c))
+        score = (f1(c))
         scored.append((score, idx, c))  # Dodaj indeks jako tie-breaker
 
     # Sortuj malejąco wg score, a przy remisie preferuj wyższy indeks (czyli późniejszy kompleks)
@@ -114,33 +122,46 @@ def main():
     
     seed = 0
     print(df['class'])
-    neg_set  = negative_examples(seed)
+    neg_set_mark = negative_examples(seed)
     pos_set = positive_examples(seed)
-    final_complex = initialize_general_complex(df)
-    print(final_complex)
-    pos_seed = return_positive_seed(pos_set)
-    print('pos seed')
-    print(pos_seed)
-    while not neg_set.empty: # dopóki zbiór negatywny
-        print('neg set')
-        print(neg_set)
-        neg_seed = return_negative_seed(neg_set)
-        print('neg seed')
-        print(neg_seed)
-        compared_seeds = compare_seeds(pos_seed, neg_seed)
+    pos_set_mark = positive_examples(seed)
+    set_of_rules = []
 
-        final_complex = generate_complex(compared_seeds, neg_seed, final_complex)
-        print('po generowaniu')
-        print(final_complex)
-        neg_set = check_coverage(neg_set,final_complex)
+    while not pos_set.empty : # dopóki zbiór reguł nie pokrywa wszystkich przykładów
+        
+        complex = initialize_general_complex(df)
+        pos_seed = return_positive_seed(pos_set)
+        print('pos seed')
+        print(pos_seed)
+ 
+        neg_set = neg_set_mark
+        while not neg_set.empty : # dopóki zbiór negatywny nie jest pusty
+            neg_seed = return_negative_seed(neg_set)
+            print('neg seed')
+            print(neg_seed)
+            compared_seeds = compare_seeds(pos_seed, neg_seed)
 
-        final_complex = evaluate_complexes_LEF(final_complex, pos_set, neg_set)
-        print('po ocenie')
-        print(final_complex)
+            complex = generate_complex(compared_seeds, neg_seed, complex)
+            print('zestaw complexów')
+            print(complex)
+            neg_set = check_coverage_of_negative_examples(neg_set,complex)
 
-    print(final_complex)
+            complex = evaluate_complexes_LEF(complex, pos_set, neg_set_mark)
+            print('po ocenie')
+            print(complex)
+
+
+        print('dodanie zasady do set of rules')
+        print(complex)
+        set_of_rules.append(complex)
+        pos_set = check_coverage_of_positive_examples(pos_set, complex)
+        print('to zbiór pozytywnych przykładów')
+        print(pos_set)
     
+    for i in set_of_rules:
+        print(i)
 
+        
 
 main()
 
