@@ -1,7 +1,24 @@
 import pandas as pd
 import copy
+from tabulate import tabulate
+import argparse
 
-df = pd.read_csv("dane_pogoda.csv")
+
+
+
+def parse_arguments():
+    parser = argparse.ArgumentParser(
+        description="Algorytm AQ do generowania reguł z pliku CSV"
+    )
+    parser.add_argument(
+        "-f", "--file", type=str, required=True,
+        help="Ścieżka do pliku CSV z danymi wejściowymi."
+    )
+    parser.add_argument(
+        "-s", "--seed", type=str , required=True,
+        help="Klasa pozytywna, która ma być analizowana."
+    )
+    return parser.parse_args()
 
 
 
@@ -14,12 +31,19 @@ def initialize_general_complex(df):
 
 
 
-def positive_examples(seed): # zwraca dataset przykładów klasy pozytywnej
+def positive_examples(df, seed): # zwraca dataset przykładów klasy pozytywnej
+    # dopasuj typ argumentu seed do typu danych w kolumnie 'class'
+    class_type = df['class'].dtype
+    if pd.api.types.is_numeric_dtype(class_type):
+        seed = int(seed)
     return df[df['class'] == seed]
 
 
 
-def negative_examples(seed): # zwraca dataset przykładów klasy negatywnej
+def negative_examples(df, seed): # zwraca dataset przykładów klasy negatywnej
+    class_type = df['class'].dtype
+    if pd.api.types.is_numeric_dtype(class_type):
+        seed = int(seed)
     return df[df['class'] != seed]
 
 
@@ -37,7 +61,9 @@ def return_negative_seed(neg_set):
 
 
 def covers(rule, example):
-
+    '''
+    funkcja pomocnicza do funkcji check_coverage_[...]_examples
+    '''
     for attr in rule:
         if example[attr] not in rule[attr]:
             return False
@@ -66,6 +92,9 @@ def check_coverage_of_positive_examples(pos_set, complexes):
 
 
 def compare_seeds(pos_seed, neg_seed):
+    '''
+    funkcja porównuje różnice pomiędzy ziarnem xs i xn oraz zwraca atrybuty, które się różnią
+    '''
     differing_attrs = []
     for i, attr in enumerate(pos_seed):
         if attr == 'class':
@@ -77,6 +106,9 @@ def compare_seeds(pos_seed, neg_seed):
 
 
 def generate_complex(compared_seeds, neg_seed, complex):
+    '''
+    generuje nowe kompleksy zgodnie z zasadą gwiazdy
+    '''
     final_complex = []
 
     for comp in range(len(complex)):    
@@ -87,14 +119,17 @@ def generate_complex(compared_seeds, neg_seed, complex):
             
             val.discard(neg_seed[compared_seeds[attr]])
             
-            #temp_complex[comp].remove(compared_seeds[attr])
-    #print(temp_complex)
             final_complex.append(temp_complex[comp])
     return final_complex
 
 
 
-def evaluate_complexes_LEF(complexes, positive_examples, negative_examples, m=1):
+def evaluate_complexes(complexes, positive_examples, negative_examples, m=2):
+    '''
+    funkcja oceny kompleksów określona jako liczba pokrywanych przez nie 
+    przykładów o kategorii identycznej z kategorią ziarna nie pokrytych 
+    przez wygenerowane wcześniej reguły
+    '''
     def f1(complex):
         # Liczba pokrywanych pozytywnych przykładów
         return sum(covers(complex, ex) for _, ex in positive_examples.iterrows())
@@ -103,7 +138,7 @@ def evaluate_complexes_LEF(complexes, positive_examples, negative_examples, m=1)
         # Liczba NIEpokrywanych negatywnych przykładów
         return sum(not covers(complex, ex) for _, ex in negative_examples.iterrows())
 
-    # Nadaj ocenę każdemu kompleksowi w==
+    # Nadaj ocenę każdemu kompleksowi 
     scored = []
     for idx, c in enumerate(complexes):
         score = (f1(c))
@@ -118,13 +153,61 @@ def evaluate_complexes_LEF(complexes, positive_examples, negative_examples, m=1)
 
 
 
+def print_rules(rules):
+    """
+    Funkcja wypisująca wszystkie utworzone reguły w formie tabeli,
+    dynamicznie dostosowując się do nazw atrybutów.
+    """
+    if not rules:
+        print("Brak reguł do wyświetlenia.")
+        return
+
+    # Zakładamy, że każda reguła to lista z jednym słownikiem
+    attribute_names = list(rules[0][0].keys())
+    headers = ["#"] + attribute_names + ["c(x)"]
+
+    table = []
+    for i, rule in enumerate(rules, 1):
+        rule_dict = rule[0]  # Zakładamy, że complex to [reguła]
+        row = [i]
+        for attr in attribute_names:
+            row.append(" ∨ ".join(sorted(rule_dict.get(attr, []))))
+        row.append("0")  # Można dodać oznaczenie klasy lub c(x)
+        table.append(row)
+
+    print(tabulate(table, headers=headers, tablefmt="grid"))
+
+
+
+def check_aq_algorithm(neg_set, pos_set, complexes):
+    x = check_coverage_of_negative_examples(neg_set, complexes)
+
+    y = check_coverage_of_positive_examples(pos_set, complexes)
+
+    if x.empty:
+        print('wszystkie negatywne przykłady są wykluczone')
+    else:
+        print(x)
+
+    if y.empty:
+        print('wszystkie pozytywne przykłady zawierają się w zestawie reguł')
+    else:
+        print(y)
+
 def main():
+    '''
+    główne wykonanie programu
+    '''
     
-    seed = 0
+    args = parse_arguments()
+    df = pd.read_csv(args.file)
+    seed = args.seed
+
     print(df['class'])
-    neg_set_mark = negative_examples(seed)
-    pos_set = positive_examples(seed)
-    pos_set_mark = positive_examples(seed)
+    neg_set_mark = negative_examples(df, seed) # zestaw wszystkich negatywnych przykładów
+    pos_set = positive_examples(df, seed) # zestaw pozytywnych przykładów, który jest aktualizowany po iteracji poprzez usunięcie pokrytych przykładów
+    pos_set_mark = pos_set
+    #pos_set_mark = positive_examples(seed) # zestaw wszystkich pozytywnych przykładów
     set_of_rules = []
 
     while not pos_set.empty : # dopóki zbiór reguł nie pokrywa wszystkich przykładów
@@ -137,29 +220,28 @@ def main():
         neg_set = neg_set_mark
         while not neg_set.empty : # dopóki zbiór negatywny nie jest pusty
             neg_seed = return_negative_seed(neg_set)
-            print('neg seed')
-            print(neg_seed)
+
             compared_seeds = compare_seeds(pos_seed, neg_seed)
 
             complex = generate_complex(compared_seeds, neg_seed, complex)
-            print('zestaw complexów')
-            print(complex)
+
             neg_set = check_coverage_of_negative_examples(neg_set,complex)
 
-            complex = evaluate_complexes_LEF(complex, pos_set, neg_set_mark)
-            print('po ocenie')
-            print(complex)
+            complex = evaluate_complexes(complex, pos_set, neg_set_mark) # ocena
 
-
+        complex = evaluate_complexes(complex, pos_set, neg_set_mark, 1)
         print('dodanie zasady do set of rules')
         print(complex)
-        set_of_rules.append(complex)
-        pos_set = check_coverage_of_positive_examples(pos_set, complex)
-        print('to zbiór pozytywnych przykładów')
+        set_of_rules.extend(complex)
+        pos_set = check_coverage_of_positive_examples(pos_set, complex) # zwraca niepokryte przykłady
+        print('zbiór pozytywnych przykładów, które pozostały :')
         print(pos_set)
     
-    for i in set_of_rules:
-        print(i)
+    #print_rules(set_of_rules)
+    print(set_of_rules)
+    print(f'liczba zasad : {len(set_of_rules)}')
+
+    check_aq_algorithm(neg_set_mark, pos_set_mark, set_of_rules)
 
         
 
