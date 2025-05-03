@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import copy
 from tabulate import tabulate
@@ -24,6 +25,10 @@ def parse_arguments():
         help="Odsetek liczby przykładów walidacyjnych z całego zbioru."
     )
     parser.add_argument(
+        "-vs", "--validation-sets-number", type=float, required=True,
+        help="Liczba podzbiorów walidacyjnych."
+    )
+    parser.add_argument(
         "-m", type=int, required=True,
         help="Liczba m najlepszych kompleksów."
     )
@@ -33,6 +38,28 @@ def parse_arguments():
     )
     return parser.parse_args()
 
+def find_conflicts(df): # sprawdzanie konfliktów w datasecie
+    label_column = 'class'
+    feature_columns = df.columns.difference([label_column]).tolist() # uzyskiwanie nazw kolumn
+    grouped = df.groupby(feature_columns)[label_column].nunique() # grupowanie wierszy o tych samych atrybutach i obliczanie liczby unikalnych klas
+
+    conflicts = grouped[grouped > 1] # weryfikowanie czy istnieją konflikty
+
+    if not conflicts.empty:
+        conflict_keys = conflicts.index.tolist()
+        conflicting_rows = []
+        for index, row in df.iterrows():
+            row_values = tuple(row[col] for col in feature_columns)
+            if row_values in conflict_keys:
+                conflicting_rows.append(row)
+
+        conflicting_rows_table = pd.DataFrame(conflicting_rows)
+        print(f"Liczba sprzecznych przykładów: {len(conflicts)}")
+        print("\nSprzeczne wiersze:")
+        print(conflicting_rows_table)
+        exit(1)
+    else:
+        print("Brak sprzecznych wierszy.")
 
 def split_dataset(dataset, r, v): # dzielenie datasetu na zbiór treningowy, walidacyjny i testowy
     split_index1 = int(r * len(dataset))
@@ -81,6 +108,11 @@ def negative_examples(df, seed, t): # zwraca dataset przykładów klasy negatywn
 
     return pd.DataFrame(filtered_examples)
 
+def negative_examples_validation(df, seed): # zwraca dataset przykładów klasy negatywnej
+    class_type = df['class'].dtype
+    if pd.api.types.is_numeric_dtype(class_type):
+        seed = int(seed)
+    return df[df['class'] != seed]
 
 def return_positive_seed(pos_set):
     pos_set = list(pos_set.to_dict(orient='records'))
@@ -246,8 +278,12 @@ def main():
     
     args = parse_arguments()
     df = pd.read_csv(args.file)
+    find_conflicts(df)
     training_dataset, validation_dataset, test_dataset = split_dataset(df, args.training_set_ratio, args.validation_set_ratio)
     seed = args.seed
+    validation_sets_number = args.validation_sets_number
+    validation_sets = np.array_split(validation_dataset, validation_sets_number)
+    print(validation_sets[0])
 
     print("\n" + "-" * 80 + "    OBLICZENIA    " + "-" * 80 + "\n")
 
@@ -269,6 +305,7 @@ def main():
         print(pos_seed)
  
         neg_set = neg_set_mark
+        i = 0
         while not neg_set.empty : # dopóki zbiór negatywny nie jest pusty
             neg_seed = return_negative_seed(neg_set)
 
@@ -278,7 +315,10 @@ def main():
 
             neg_set = check_coverage_of_negative_examples(neg_set,complex)
 
-            complex = evaluate_complexes(complex, pos_set, validation_dataset, args.m) # ocena
+            pos_val_set = positive_examples(validation_sets[i], seed)
+            neg_val_set = negative_examples_validation(validation_sets[i], seed)
+            complex = evaluate_complexes(complex, pos_val_set, neg_val_set, args.m) # ocena
+            i = i + 1
 
         complex = evaluate_complexes(complex, pos_set, neg_set_mark, args.m)
         print('Dodanie zasady do set of rules')

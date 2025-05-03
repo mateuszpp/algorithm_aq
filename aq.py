@@ -31,6 +31,28 @@ def parse_arguments():
     )
     return parser.parse_args()
 
+def find_conflicts(df): # sprawdzanie konfliktów w datasecie
+    label_column = 'class'
+    feature_columns = df.columns.difference([label_column]).tolist() # uzyskiwanie nazw kolumn
+    grouped = df.groupby(feature_columns)[label_column].nunique() # grupowanie wierszy o tych samych atrybutach i obliczanie liczby unikalnych klas
+
+    conflicts = grouped[grouped > 1] # weryfikowanie czy istnieją konflikty
+
+    if not conflicts.empty:
+        conflict_keys = conflicts.index.tolist()
+        conflicting_rows = []
+        for index, row in df.iterrows():
+            row_values = tuple(row[col] for col in feature_columns)
+            if row_values in conflict_keys:
+                conflicting_rows.append(row)
+
+        conflicting_rows_table = pd.DataFrame(conflicting_rows)
+        print(f"Liczba sprzecznych przykładów: {len(conflicts)}")
+        print("\nSprzeczne wiersze:")
+        print(conflicting_rows_table)
+        exit(1)
+    else:
+        print("Brak sprzecznych wierszy.")
 
 def split_dataset(dataset, r): # dzielenie datasetu na zbiór treningowy i testowy
     split_index = int(r * len(dataset))
@@ -242,6 +264,7 @@ def main():
     
     args = parse_arguments()
     df = pd.read_csv(args.file)
+    find_conflicts(df)
     training_dataset, test_dataset = split_dataset(df, args.training_set_ratio)
     seed = args.seed
 
