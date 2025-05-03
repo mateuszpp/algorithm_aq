@@ -1,0 +1,516 @@
+Age,Gender,Polyuria,Polydipsia,sudden weight loss,weakness,Polyphagia,Genital thrush,visual blurring,Itching,Irritability,delayed healing,partial paresis,muscle stiffness,Alopecia,Obesity,class
+adult,Male,No,Yes,No,Yes,No,No,No,Yes,No,Yes,No,Yes,Yes,Yes,Positive
+senior,Male,No,No,No,Yes,No,No,Yes,No,No,No,Yes,No,Yes,No,Positive
+older adult,Male,Yes,No,No,Yes,Yes,No,No,Yes,No,Yes,No,Yes,Yes,No,Positive
+older adult,Male,No,No,Yes,Yes,Yes,Yes,No,Yes,No,Yes,No,No,No,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Positive
+senior,Male,Yes,Yes,No,Yes,Yes,No,Yes,Yes,No,Yes,No,Yes,Yes,Yes,Positive
+senior,Male,Yes,Yes,No,Yes,Yes,Yes,No,No,No,Yes,Yes,No,No,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,No,Yes,Yes,No,No,Positive
+senior,Male,Yes,Yes,No,Yes,Yes,Yes,No,Yes,Yes,No,Yes,Yes,No,Yes,Positive
+senior,Male,No,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,No,No,No,Yes,No,Positive
+older adult,Male,Yes,Yes,No,Yes,No,Yes,No,No,Yes,Yes,No,Yes,Yes,No,Positive
+adult,Male,Yes,Yes,No,No,Yes,Yes,No,Yes,No,Yes,No,Yes,No,No,Positive
+adult,Male,Yes,No,No,No,Yes,Yes,No,No,Yes,Yes,No,No,Yes,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,Yes,Yes,Positive
+senior,Male,Yes,Yes,No,Yes,Yes,No,Yes,Yes,No,Yes,Yes,No,No,No,Positive
+senior,Male,Yes,Yes,No,Yes,Yes,No,No,No,No,Yes,Yes,Yes,No,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,No,Yes,No,No,No,Yes,No,Yes,No,No,Positive
+senior,Male,No,Yes,No,Yes,Yes,No,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,Positive
+senior,Male,Yes,Yes,No,Yes,Yes,No,Yes,No,No,No,Yes,Yes,No,No,Positive
+older adult,Male,Yes,Yes,Yes,Yes,No,Yes,No,No,No,No,No,No,No,No,Positive
+senior,Male,Yes,Yes,No,Yes,Yes,No,Yes,No,Yes,No,Yes,Yes,No,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,No,Yes,Yes,No,Positive
+adult,Male,Yes,No,Yes,No,No,Yes,No,Yes,Yes,No,No,No,Yes,No,Positive
+older adult,Male,No,Yes,Yes,Yes,No,No,Yes,Yes,Yes,Yes,No,No,No,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,Yes,Yes,Yes,No,Yes,Positive
+adult,Male,No,No,No,No,No,Yes,No,No,Yes,Yes,No,No,No,Yes,Positive
+older adult,Male,No,No,No,Yes,Yes,No,No,No,Yes,No,No,Yes,No,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,No,Yes,Yes,Yes,No,No,Positive
+adult,Male,No,Yes,No,No,No,Yes,No,No,No,No,No,No,Yes,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,No,Yes,No,Yes,No,Yes,No,Yes,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,Yes,No,No,No,Positive
+older adult,Male,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,Yes,Positive
+adult,Male,No,No,No,Yes,No,No,No,No,No,Yes,No,No,Yes,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Positive
+older adult,Male,Yes,Yes,No,Yes,No,No,Yes,Yes,No,No,No,No,No,No,Positive
+older adult,Male,Yes,Yes,No,Yes,No,Yes,Yes,Yes,No,No,No,No,No,No,Positive
+senior,Male,Yes,No,No,No,No,No,Yes,No,No,No,Yes,No,Yes,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,No,Yes,Yes,Yes,Positive
+adult,Male,Yes,No,Yes,No,No,No,No,No,No,No,Yes,No,Yes,No,Positive
+young,Female,Yes,No,Yes,Yes,Yes,No,No,No,No,Yes,No,No,No,No,Positive
+senior,Female,No,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,Positive
+older adult,Female,Yes,Yes,Yes,No,Yes,No,No,No,No,Yes,Yes,No,No,No,Positive
+older adult,Female,No,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,Yes,Yes,Yes,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,No,No,Yes,Yes,No,No,Yes,Yes,No,No,Positive
+older adult,Female,No,No,Yes,Yes,No,No,Yes,Yes,No,Yes,Yes,No,No,No,Positive
+senior,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,No,Yes,Yes,Yes,No,Yes,Positive
+senior,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,No,No,Yes,Yes,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,No,Yes,No,Yes,No,Yes,Positive
+older adult,Female,Yes,No,Yes,Yes,No,No,Yes,No,No,Yes,Yes,Yes,No,No,Positive
+adult,Female,Yes,Yes,Yes,No,Yes,No,Yes,No,Yes,Yes,Yes,Yes,No,No,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,Yes,No,No,No,Positive
+senior,Female,No,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,No,No,Positive
+older adult,Female,No,Yes,Yes,Yes,No,No,Yes,No,No,Yes,No,No,No,No,Positive
+senior,Female,No,No,No,No,No,No,Yes,No,No,No,Yes,Yes,No,No,Positive
+adult,Female,No,No,No,No,No,No,No,No,No,No,No,No,No,Yes,Positive
+senior,Female,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,No,No,Positive
+senior,Female,No,No,No,No,Yes,No,Yes,No,No,No,Yes,No,No,No,Positive
+senior,Female,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Positive
+adult,Female,Yes,Yes,No,Yes,Yes,No,Yes,No,Yes,Yes,Yes,Yes,No,Yes,Positive
+senior,Female,Yes,Yes,No,Yes,Yes,No,No,Yes,No,No,Yes,Yes,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,No,Yes,Yes,Yes,No,No,Positive
+senior,Female,Yes,Yes,No,Yes,Yes,No,Yes,Yes,No,Yes,Yes,Yes,No,No,Positive
+senior,Female,Yes,No,Yes,Yes,No,Yes,Yes,Yes,No,Yes,Yes,Yes,No,Yes,Positive
+older adult,Female,No,No,No,No,No,No,Yes,Yes,No,No,Yes,No,No,No,Positive
+adult,Female,Yes,No,Yes,No,Yes,No,No,No,No,No,No,No,No,No,Positive
+young,Female,Yes,Yes,No,No,No,No,No,Yes,No,Yes,Yes,No,No,No,Positive
+adult,Female,No,Yes,Yes,Yes,Yes,No,No,Yes,No,No,Yes,No,No,No,Positive
+young,Female,No,No,No,Yes,Yes,No,Yes,No,No,No,No,No,Yes,No,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,Yes,No,No,Yes,Positive
+adult,Female,No,No,Yes,Yes,No,No,No,No,No,No,No,No,No,No,Positive
+adult,Female,No,Yes,Yes,Yes,No,No,No,Yes,No,Yes,Yes,Yes,No,No,Positive
+senior,Female,No,No,No,No,No,Yes,No,No,No,No,No,No,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,Yes,No,No,No,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,Yes,Yes,Yes,No,No,Positive
+senior,Female,Yes,Yes,Yes,Yes,No,No,Yes,No,No,No,Yes,No,No,Yes,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,Yes,No,No,No,Positive
+senior,Female,Yes,Yes,Yes,No,Yes,No,No,Yes,No,Yes,Yes,No,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,Yes,No,No,No,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,Yes,Yes,No,Yes,Positive
+adult,Female,Yes,Yes,No,Yes,No,No,Yes,No,No,No,No,No,No,No,Positive
+older adult,Female,No,No,Yes,Yes,Yes,No,No,No,No,No,No,Yes,No,No,Positive
+older adult,Female,Yes,Yes,No,Yes,Yes,No,No,No,No,Yes,Yes,No,No,No,Positive
+older adult,Female,Yes,Yes,No,Yes,No,No,Yes,Yes,No,Yes,Yes,No,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,No,Yes,Yes,Yes,No,No,Positive
+older adult,Female,No,No,Yes,Yes,No,No,No,No,No,No,No,No,No,Yes,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Positive
+young,Female,No,No,No,No,No,No,Yes,No,No,No,Yes,Yes,No,No,Positive
+senior,Female,Yes,Yes,No,Yes,Yes,No,Yes,Yes,No,Yes,Yes,No,No,No,Positive
+older adult,Female,No,No,No,No,Yes,No,Yes,Yes,No,No,Yes,No,No,No,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,No,No,Yes,No,No,Yes,Yes,Yes,No,No,Positive
+adult,Female,Yes,Yes,No,Yes,Yes,No,No,Yes,No,No,Yes,No,No,No,Positive
+adult,Female,Yes,Yes,No,Yes,Yes,No,Yes,Yes,No,Yes,Yes,No,No,No,Positive
+senior,Female,Yes,Yes,No,Yes,No,No,Yes,Yes,No,No,Yes,No,No,No,Positive
+young,Female,Yes,Yes,Yes,Yes,No,No,No,Yes,No,Yes,Yes,Yes,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,No,Yes,Yes,No,No,Positive
+adult,Female,Yes,Yes,No,No,No,No,Yes,No,No,No,No,No,Yes,No,Positive
+adult,Female,Yes,Yes,No,No,Yes,Yes,Yes,Yes,No,Yes,Yes,No,No,No,Positive
+older adult,Female,Yes,Yes,Yes,No,Yes,Yes,No,No,Yes,Yes,No,Yes,Yes,Yes,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,No,No,Positive
+senior,Female,No,Yes,Yes,No,No,Yes,Yes,Yes,No,No,No,Yes,Yes,No,Positive
+senior,Male,Yes,No,Yes,Yes,Yes,No,No,No,Yes,Yes,Yes,Yes,Yes,No,Positive
+senior,Male,Yes,No,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,Yes,Yes,No,Positive
+senior,Female,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,Yes,No,Positive
+senior,Male,No,Yes,Yes,Yes,Yes,No,Yes,Yes,No,No,Yes,No,Yes,Yes,Positive
+older adult,Male,Yes,No,Yes,Yes,Yes,No,No,No,No,Yes,Yes,Yes,No,No,Positive
+young,Male,Yes,Yes,No,No,Yes,Yes,Yes,Yes,No,Yes,No,No,Yes,No,Positive
+adult,Female,Yes,Yes,No,No,Yes,No,Yes,No,Yes,Yes,Yes,Yes,No,No,Positive
+senior,Female,No,No,Yes,Yes,No,No,Yes,Yes,No,Yes,No,No,No,No,Positive
+senior,Male,Yes,Yes,Yes,No,Yes,Yes,Yes,No,Yes,No,Yes,No,Yes,Yes,Positive
+senior,Female,Yes,Yes,Yes,No,Yes,Yes,Yes,No,Yes,Yes,No,Yes,Yes,No,Positive
+senior,Male,No,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,No,Yes,No,No,No,Positive
+senior,Female,Yes,No,Yes,No,No,Yes,Yes,Yes,No,Yes,Yes,No,No,No,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,No,No,No,Positive
+young,Female,Yes,Yes,Yes,No,Yes,No,No,No,Yes,No,Yes,Yes,No,No,Positive
+older adult,Female,Yes,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Positive
+senior,Female,Yes,Yes,No,Yes,No,No,Yes,Yes,Yes,Yes,Yes,No,No,No,Positive
+adult,Female,Yes,Yes,No,Yes,No,No,No,No,Yes,No,No,Yes,No,No,Positive
+older adult,Male,Yes,Yes,No,Yes,Yes,No,No,No,No,Yes,No,Yes,Yes,No,Positive
+adult,Male,Yes,Yes,No,Yes,Yes,Yes,No,Yes,No,Yes,Yes,Yes,No,No,Positive
+adult,Male,No,Yes,No,Yes,Yes,No,No,Yes,Yes,Yes,Yes,Yes,No,Yes,Positive
+older adult,Male,No,Yes,No,No,No,No,Yes,Yes,No,No,No,No,Yes,Yes,Positive
+adult,Male,Yes,No,Yes,Yes,No,No,No,No,No,No,No,No,No,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,Yes,Yes,No,No,No,Positive
+senior,Male,Yes,Yes,No,Yes,No,Yes,No,Yes,Yes,Yes,Yes,No,No,No,Positive
+senior,Male,Yes,No,No,Yes,Yes,No,No,Yes,Yes,No,No,Yes,Yes,No,Positive
+adult,Male,No,Yes,No,Yes,Yes,Yes,No,Yes,Yes,No,No,No,Yes,No,Positive
+older adult,Male,Yes,Yes,Yes,Yes,No,No,No,Yes,No,No,Yes,No,Yes,No,Positive
+older adult,Male,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,No,Positive
+older adult,Male,Yes,No,No,No,Yes,No,No,No,Yes,No,No,Yes,No,No,Positive
+young,Male,Yes,Yes,Yes,Yes,No,Yes,No,No,No,Yes,No,No,No,No,Positive
+young,Male,Yes,No,Yes,No,Yes,No,No,No,No,No,No,No,No,No,Positive
+adult,Male,Yes,Yes,Yes,Yes,No,No,No,No,No,No,No,No,No,No,Positive
+senior,Male,No,No,No,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,No,Positive
+senior,Male,No,No,No,No,No,Yes,No,Yes,Yes,No,No,Yes,Yes,Yes,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Positive
+senior,Male,Yes,Yes,Yes,Yes,No,Yes,No,No,Yes,Yes,Yes,No,Yes,No,Positive
+adult,Male,Yes,No,No,No,No,Yes,No,Yes,No,Yes,No,No,Yes,No,Positive
+older adult,Male,Yes,Yes,No,No,No,No,No,No,No,No,No,Yes,No,No,Positive
+senior,Male,Yes,Yes,No,No,Yes,No,Yes,No,Yes,Yes,Yes,No,Yes,No,Positive
+older adult,Male,Yes,Yes,Yes,No,No,No,No,Yes,No,No,No,No,No,No,Positive
+senior,Male,Yes,No,Yes,No,No,No,No,No,No,Yes,Yes,No,No,No,Positive
+senior,Male,Yes,Yes,No,No,Yes,No,Yes,Yes,Yes,No,Yes,No,No,No,Positive
+senior,Male,Yes,No,No,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,Positive
+adult,Male,Yes,Yes,No,No,No,Yes,No,Yes,No,No,No,Yes,No,Yes,Positive
+adult,Male,Yes,No,No,No,No,Yes,No,Yes,No,No,No,Yes,No,Yes,Positive
+older adult,Male,No,Yes,No,No,No,Yes,No,No,No,Yes,No,No,No,Yes,Positive
+older adult,Male,Yes,Yes,No,Yes,No,Yes,No,No,No,Yes,No,No,Yes,No,Positive
+older adult,Male,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,No,No,Yes,No,Positive
+older adult,Male,Yes,Yes,No,Yes,No,Yes,No,No,Yes,No,Yes,No,Yes,No,Positive
+senior,Male,No,Yes,No,Yes,No,Yes,No,No,Yes,Yes,No,No,Yes,No,Positive
+senior,Male,No,Yes,No,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,No,Positive
+senior,Male,Yes,No,No,Yes,No,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Positive
+adult,Male,No,Yes,No,No,No,No,No,No,No,No,No,No,No,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,No,Yes,No,No,Yes,No,Yes,No,No,No,Positive
+older adult,Male,Yes,Yes,Yes,No,Yes,Yes,No,No,No,Yes,No,No,No,No,Positive
+senior,Male,Yes,No,Yes,Yes,No,Yes,No,Yes,Yes,No,No,No,Yes,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Positive
+young,Female,No,No,No,No,No,No,Yes,No,No,No,Yes,Yes,No,No,Positive
+senior,Female,Yes,Yes,No,Yes,Yes,No,Yes,Yes,No,Yes,Yes,No,No,No,Positive
+older adult,Female,No,No,No,No,Yes,No,Yes,Yes,No,No,Yes,No,No,No,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,No,No,Yes,No,No,Yes,Yes,Yes,No,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,Yes,No,No,No,Positive
+older adult,Male,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,Yes,Positive
+adult,Male,No,No,No,Yes,No,No,No,No,No,Yes,No,No,Yes,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Positive
+older adult,Male,Yes,Yes,No,Yes,No,No,Yes,Yes,No,No,No,No,No,No,Positive
+older adult,Male,Yes,Yes,No,Yes,No,Yes,Yes,Yes,No,No,No,No,No,No,Positive
+senior,Male,Yes,No,No,No,No,No,Yes,No,No,No,Yes,No,Yes,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,No,Yes,Yes,Yes,Positive
+adult,Male,Yes,No,Yes,No,No,No,No,No,No,No,Yes,No,Yes,No,Positive
+young,Female,Yes,No,Yes,Yes,Yes,No,No,No,No,Yes,No,No,No,No,Positive
+senior,Female,No,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,Positive
+older adult,Female,Yes,Yes,Yes,No,Yes,No,No,No,No,Yes,Yes,No,No,No,Positive
+older adult,Female,No,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,Yes,Yes,Yes,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,No,No,Yes,Yes,No,No,Yes,Yes,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,No,Yes,Yes,No,No,Positive
+adult,Female,Yes,Yes,No,No,No,No,Yes,No,No,No,No,No,Yes,No,Positive
+adult,Female,Yes,Yes,No,No,Yes,Yes,Yes,Yes,No,Yes,Yes,No,No,No,Positive
+older adult,Female,Yes,Yes,Yes,No,Yes,Yes,No,No,Yes,Yes,No,Yes,Yes,Yes,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,No,No,Positive
+senior,Female,No,Yes,Yes,No,No,Yes,Yes,Yes,No,No,No,Yes,Yes,No,Positive
+senior,Male,Yes,No,Yes,Yes,Yes,No,No,No,Yes,Yes,Yes,Yes,Yes,No,Positive
+senior,Male,Yes,No,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,Yes,Yes,No,Positive
+senior,Female,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,Yes,No,Positive
+senior,Male,No,Yes,Yes,Yes,Yes,No,Yes,Yes,No,No,Yes,No,Yes,Yes,Positive
+senior,Male,Yes,Yes,No,No,No,No,Yes,No,No,No,No,No,No,No,Positive
+senior,Male,No,Yes,No,No,No,No,No,No,Yes,Yes,No,No,No,No,Positive
+adult,Male,Yes,No,No,Yes,No,Yes,Yes,Yes,No,Yes,No,No,No,No,Positive
+older adult,Male,No,No,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,Positive
+adult,Male,Yes,No,No,No,Yes,No,Yes,No,No,No,Yes,No,Yes,No,Positive
+senior,Male,No,No,No,No,Yes,No,Yes,No,No,No,Yes,No,Yes,No,Positive
+senior,Female,Yes,No,No,No,Yes,No,No,No,Yes,No,No,No,Yes,No,Positive
+senior,Female,Yes,No,Yes,No,Yes,No,No,No,Yes,No,No,Yes,No,Yes,Positive
+senior,Female,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,No,No,Yes,No,Yes,Positive
+adult,Male,No,Yes,Yes,Yes,No,No,Yes,Yes,No,No,Yes,Yes,No,No,Negative
+young,Male,No,No,Yes,No,No,No,No,No,No,No,No,No,No,No,Negative
+adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+senior,Male,Yes,No,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Negative
+senior,Male,No,No,No,Yes,No,No,No,No,No,No,Yes,Yes,No,No,Negative
+senior,Male,No,No,No,No,Yes,No,No,Yes,No,Yes,No,No,Yes,Yes,Negative
+senior,Male,No,No,Yes,Yes,No,Yes,No,No,No,Yes,No,No,Yes,No,Negative
+older adult,Male,No,No,Yes,No,No,Yes,No,No,No,Yes,No,No,Yes,No,Negative
+adult,Male,No,No,No,Yes,No,Yes,No,No,No,No,No,No,No,No,Negative
+adult,Male,No,No,No,Yes,No,No,No,No,Yes,No,No,No,No,No,Negative
+older adult,Male,No,No,No,No,No,No,No,No,Yes,No,No,No,No,No,Negative
+older adult,Male,No,Yes,No,No,No,No,No,Yes,No,No,Yes,No,No,Yes,Negative
+older adult,Male,No,No,No,No,No,No,No,Yes,No,No,No,No,Yes,No,Negative
+older adult,Male,No,No,No,No,Yes,Yes,No,No,No,No,No,No,No,No,Negative
+senior,Male,No,No,No,No,Yes,No,Yes,No,No,No,No,Yes,No,No,Negative
+senior,Male,Yes,No,No,No,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+older adult,Male,No,No,No,Yes,No,Yes,No,Yes,No,Yes,No,No,Yes,No,Negative
+adult,Male,No,No,Yes,No,No,No,No,No,No,No,No,No,No,Yes,Negative
+senior,Male,No,No,No,Yes,Yes,No,Yes,Yes,No,Yes,No,Yes,No,Yes,Negative
+senior,Male,No,No,No,Yes,Yes,No,Yes,Yes,No,Yes,No,No,Yes,No,Negative
+young,Male,No,No,No,Yes,No,No,No,No,No,No,No,No,No,No,Negative
+adult,Male,No,No,No,No,No,No,No,Yes,No,No,No,No,No,No,Negative
+young,Male,No,No,Yes,Yes,No,No,No,No,No,No,No,No,No,No,Negative
+older adult,Male,No,No,No,Yes,No,No,No,Yes,Yes,Yes,Yes,No,No,No,Negative
+older adult,Male,No,No,No,No,No,No,No,Yes,No,Yes,No,No,Yes,No,Negative
+adult,Male,No,No,Yes,Yes,No,Yes,No,No,No,No,No,No,No,No,Negative
+adult,Male,No,No,No,Yes,No,No,No,No,No,No,No,No,No,No,Negative
+senior,Male,No,Yes,No,Yes,Yes,No,Yes,Yes,No,Yes,No,Yes,Yes,No,Negative
+older adult,Male,No,No,No,Yes,No,No,No,Yes,No,Yes,Yes,Yes,Yes,No,Negative
+senior,Male,No,No,No,Yes,Yes,No,No,Yes,No,Yes,No,No,Yes,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+senior,Male,No,No,No,Yes,Yes,No,Yes,Yes,No,Yes,No,Yes,Yes,No,Negative
+senior,Male,No,No,No,Yes,No,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Negative
+senior,Male,No,No,No,No,Yes,No,Yes,Yes,No,Yes,No,Yes,Yes,No,Negative
+young,Male,No,No,No,Yes,No,No,No,No,No,No,No,No,No,No,Negative
+older adult,Male,No,No,No,Yes,No,No,No,Yes,No,No,Yes,No,Yes,No,Negative
+senior,Male,Yes,No,No,No,No,No,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Negative
+senior,Male,No,No,No,Yes,No,No,Yes,Yes,No,Yes,No,Yes,Yes,No,Negative
+adult,Male,No,No,No,Yes,No,No,No,No,No,No,No,No,No,No,Negative
+senior,Male,No,No,No,Yes,No,No,No,Yes,No,Yes,No,Yes,Yes,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+older adult,Male,No,No,No,Yes,No,No,No,Yes,No,Yes,No,No,Yes,No,Negative
+senior,Male,No,No,No,Yes,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Negative
+older adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,Yes,No,Negative
+senior,Female,Yes,Yes,Yes,Yes,No,No,Yes,No,No,No,Yes,No,No,Yes,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,Yes,No,No,No,Positive
+senior,Female,Yes,Yes,Yes,No,Yes,No,No,Yes,No,Yes,Yes,No,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,Yes,No,No,No,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,Yes,Yes,No,Yes,Positive
+adult,Female,Yes,Yes,No,Yes,No,No,Yes,No,No,No,No,No,No,No,Positive
+older adult,Female,No,No,Yes,Yes,Yes,No,No,No,No,No,No,Yes,No,No,Positive
+older adult,Female,Yes,Yes,No,Yes,Yes,No,No,No,No,Yes,Yes,No,No,No,Positive
+older adult,Female,Yes,Yes,No,Yes,No,No,Yes,Yes,No,Yes,Yes,No,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,No,Yes,Yes,Yes,No,No,Positive
+senior,Male,Yes,No,No,Yes,No,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Positive
+adult,Male,No,Yes,No,No,No,No,No,No,No,No,No,No,No,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,No,Yes,No,No,Yes,No,Yes,No,No,No,Positive
+older adult,Male,Yes,Yes,Yes,No,Yes,Yes,No,No,No,Yes,No,No,No,No,Positive
+senior,Male,Yes,No,Yes,Yes,No,Yes,No,Yes,Yes,No,No,No,Yes,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Positive
+young,Female,No,No,No,No,No,No,Yes,No,No,No,Yes,Yes,No,No,Positive
+senior,Female,Yes,Yes,No,Yes,Yes,No,Yes,Yes,No,Yes,Yes,No,No,No,Positive
+older adult,Female,No,No,No,No,Yes,No,Yes,Yes,No,No,Yes,No,No,No,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,No,No,Yes,No,No,Yes,Yes,Yes,No,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,Yes,No,No,No,Positive
+older adult,Male,No,No,No,No,No,No,No,Yes,No,No,No,No,Yes,No,Negative
+older adult,Male,No,No,No,No,Yes,Yes,No,No,No,No,No,No,No,No,Negative
+senior,Male,No,No,No,No,Yes,No,Yes,No,No,No,No,Yes,No,No,Negative
+senior,Male,Yes,No,No,No,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+older adult,Male,No,No,No,Yes,No,Yes,No,Yes,No,Yes,No,No,Yes,No,Negative
+adult,Male,No,No,Yes,No,No,No,No,No,No,No,No,No,No,Yes,Negative
+older adult,Male,No,No,No,No,No,No,No,Yes,No,No,No,No,Yes,No,Negative
+older adult,Male,No,No,No,No,Yes,Yes,No,No,No,No,No,No,No,No,Negative
+senior,Male,No,No,No,No,Yes,No,Yes,No,No,No,No,Yes,No,No,Negative
+senior,Male,Yes,No,No,No,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+older adult,Male,No,No,No,Yes,No,Yes,No,Yes,No,Yes,No,No,Yes,No,Negative
+adult,Male,No,No,Yes,No,No,No,No,No,No,No,No,No,No,Yes,Negative
+senior,Male,No,No,No,Yes,No,No,No,Yes,No,Yes,No,Yes,Yes,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+older adult,Male,No,No,No,Yes,No,No,No,Yes,No,Yes,No,No,Yes,No,Negative
+senior,Male,No,No,No,Yes,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Negative
+older adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,Yes,No,Negative
+senior,Female,Yes,Yes,Yes,Yes,No,No,Yes,No,No,No,Yes,No,No,Yes,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,Yes,No,No,No,Positive
+senior,Female,Yes,Yes,Yes,No,Yes,No,No,Yes,No,Yes,Yes,No,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,Yes,No,No,No,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,Yes,Yes,No,Yes,Positive
+adult,Female,Yes,Yes,No,Yes,No,No,Yes,No,No,No,No,No,No,No,Positive
+older adult,Female,No,No,Yes,Yes,Yes,No,No,No,No,No,No,Yes,No,No,Positive
+senior,Female,Yes,No,No,No,Yes,No,No,No,Yes,No,No,No,Yes,No,Positive
+senior,Female,Yes,No,Yes,No,Yes,No,No,No,Yes,No,No,Yes,No,Yes,Positive
+senior,Female,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,No,No,Yes,No,Yes,Positive
+adult,Male,No,Yes,Yes,Yes,No,No,Yes,Yes,No,No,Yes,Yes,No,No,Negative
+young,Male,No,No,Yes,No,No,No,No,No,No,No,No,No,No,No,Negative
+adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+senior,Male,Yes,No,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Negative
+senior,Male,No,No,No,Yes,No,No,No,No,No,No,Yes,Yes,No,No,Negative
+senior,Male,No,No,No,No,Yes,No,No,Yes,No,Yes,No,No,Yes,Yes,Negative
+senior,Male,No,No,Yes,Yes,No,Yes,No,No,No,Yes,No,No,Yes,No,Negative
+older adult,Male,No,No,Yes,No,No,Yes,No,No,No,Yes,No,No,Yes,No,Negative
+adult,Female,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+senior,Female,No,No,No,Yes,No,Yes,No,Yes,No,Yes,Yes,No,Yes,No,Negative
+adult,Female,No,No,No,Yes,No,No,No,No,Yes,No,No,No,No,No,Negative
+young,Female,No,No,No,No,Yes,No,No,No,No,No,Yes,No,No,No,Negative
+adult,Female,No,No,Yes,No,No,No,No,No,No,No,No,No,No,No,Negative
+senior,Female,No,No,No,Yes,No,No,No,Yes,No,Yes,No,No,Yes,No,Negative
+adult,Female,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+senior,Male,No,No,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Yes,Yes,No,Negative
+older adult,Male,Yes,No,Yes,Yes,No,Yes,No,Yes,No,Yes,No,No,Yes,Yes,Negative
+adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+older adult,Male,No,No,No,Yes,No,Yes,No,Yes,No,No,No,No,Yes,No,Negative
+senior,Male,No,No,No,Yes,No,No,Yes,Yes,No,Yes,No,Yes,Yes,No,Negative
+older adult,Male,No,No,No,No,No,No,No,No,Yes,No,Yes,No,No,Yes,Negative
+senior,Male,No,Yes,No,No,No,No,Yes,Yes,No,No,No,Yes,No,No,Negative
+senior,Male,No,No,Yes,Yes,Yes,No,Yes,Yes,No,Yes,No,Yes,Yes,No,Negative
+senior,Female,No,No,No,No,No,Yes,No,Yes,No,Yes,No,No,Yes,No,Negative
+senior,Female,No,No,No,Yes,No,No,Yes,Yes,No,Yes,No,Yes,Yes,Yes,Negative
+older adult,Female,No,No,No,Yes,No,No,Yes,Yes,No,Yes,No,No,Yes,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+older adult,Male,No,No,No,Yes,No,No,No,Yes,No,Yes,No,No,Yes,No,Negative
+senior,Male,No,No,No,Yes,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Negative
+older adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,Yes,No,Negative
+senior,Female,Yes,Yes,Yes,Yes,No,No,Yes,No,No,No,Yes,No,No,Yes,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,Yes,No,No,No,Positive
+senior,Female,Yes,Yes,Yes,No,Yes,No,No,Yes,No,Yes,Yes,No,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,Yes,No,No,No,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,Yes,Yes,No,Yes,Positive
+adult,Female,Yes,Yes,No,Yes,No,No,Yes,No,No,No,No,No,No,No,Positive
+older adult,Female,No,No,Yes,Yes,Yes,No,No,No,No,No,No,Yes,No,No,Positive
+senior,Female,Yes,No,No,No,Yes,No,No,No,Yes,No,No,No,Yes,No,Positive
+senior,Female,Yes,No,Yes,No,Yes,No,No,No,Yes,No,No,Yes,No,Yes,Positive
+senior,Female,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,No,No,Yes,No,Yes,Positive
+adult,Male,No,Yes,Yes,Yes,No,No,Yes,Yes,No,No,Yes,Yes,No,No,Negative
+young,Male,No,No,Yes,No,No,No,No,No,No,No,No,No,No,No,Negative
+adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+senior,Male,Yes,No,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Negative
+senior,Male,No,No,No,Yes,No,No,No,No,No,No,Yes,Yes,No,No,Negative
+senior,Male,No,No,No,No,Yes,No,No,Yes,No,Yes,No,No,Yes,Yes,Negative
+senior,Male,No,No,Yes,Yes,No,Yes,No,No,No,Yes,No,No,Yes,No,Negative
+older adult,Male,No,No,Yes,No,No,Yes,No,No,No,Yes,No,No,Yes,No,Negative
+adult,Female,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+senior,Male,Yes,Yes,Yes,Yes,No,Yes,No,No,Yes,No,Yes,No,No,No,Positive
+older adult,Male,Yes,Yes,Yes,No,Yes,Yes,No,No,No,Yes,No,No,No,No,Positive
+senior,Male,Yes,No,Yes,Yes,No,Yes,No,Yes,Yes,No,No,No,Yes,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Positive
+young,Female,No,No,No,No,No,No,Yes,No,No,No,Yes,Yes,No,No,Positive
+senior,Female,Yes,Yes,No,Yes,Yes,No,Yes,Yes,No,Yes,Yes,No,No,No,Positive
+older adult,Female,No,No,No,No,Yes,No,Yes,Yes,No,No,Yes,No,No,No,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,No,No,Yes,No,No,Yes,Yes,Yes,No,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,Yes,No,No,No,Positive
+older adult,Male,No,No,No,No,No,No,No,Yes,No,No,No,No,Yes,No,Negative
+older adult,Male,No,No,No,No,Yes,Yes,No,No,No,No,No,No,No,No,Negative
+senior,Male,No,No,No,No,Yes,No,Yes,No,No,No,No,Yes,No,No,Negative
+senior,Male,Yes,No,No,No,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+older adult,Male,No,No,No,Yes,No,Yes,No,Yes,No,Yes,No,No,Yes,No,Negative
+adult,Male,No,No,Yes,No,No,No,No,No,No,No,No,No,No,Yes,Negative
+older adult,Male,Yes,Yes,No,No,No,No,No,No,No,No,No,Yes,No,No,Positive
+senior,Male,Yes,Yes,No,No,Yes,No,Yes,No,Yes,Yes,Yes,No,Yes,No,Positive
+older adult,Male,Yes,Yes,Yes,No,No,No,No,Yes,No,No,No,No,No,No,Positive
+senior,Male,Yes,No,Yes,No,No,No,No,No,No,Yes,Yes,No,No,No,Positive
+senior,Male,Yes,Yes,No,No,Yes,No,Yes,Yes,Yes,No,Yes,No,No,No,Positive
+senior,Male,Yes,No,No,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,Positive
+adult,Male,Yes,Yes,No,No,No,Yes,No,Yes,No,No,No,Yes,No,Yes,Positive
+adult,Male,Yes,No,No,No,No,Yes,No,Yes,No,No,No,Yes,No,Yes,Positive
+older adult,Male,Yes,No,Yes,Yes,No,Yes,No,Yes,No,Yes,No,No,Yes,Yes,Negative
+adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+older adult,Male,No,No,No,Yes,No,Yes,No,Yes,No,No,No,No,Yes,No,Negative
+senior,Male,No,No,No,Yes,No,No,Yes,Yes,No,Yes,No,Yes,Yes,No,Negative
+older adult,Male,No,No,No,No,No,No,No,No,Yes,No,Yes,No,No,Yes,Negative
+senior,Male,No,Yes,No,No,No,No,Yes,Yes,No,No,No,Yes,No,No,Negative
+senior,Male,No,No,Yes,Yes,Yes,No,Yes,Yes,No,Yes,No,Yes,Yes,No,Negative
+senior,Female,No,No,No,No,No,Yes,No,Yes,No,Yes,No,No,Yes,No,Negative
+senior,Female,No,No,No,Yes,No,No,Yes,Yes,No,Yes,No,Yes,Yes,Yes,Negative
+older adult,Female,No,No,No,Yes,No,No,Yes,Yes,No,Yes,No,No,Yes,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+older adult,Male,No,No,No,Yes,No,No,No,Yes,No,Yes,No,No,Yes,No,Negative
+senior,Male,No,No,No,Yes,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Negative
+senior,Male,No,No,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Yes,Yes,No,Negative
+older adult,Male,Yes,No,Yes,Yes,No,Yes,No,Yes,No,Yes,No,No,Yes,Yes,Negative
+adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+older adult,Male,No,No,No,Yes,No,Yes,No,Yes,No,No,No,No,Yes,No,Negative
+senior,Male,No,No,No,Yes,No,No,Yes,Yes,No,Yes,No,Yes,Yes,No,Negative
+older adult,Male,No,No,No,No,No,No,No,No,Yes,No,Yes,No,No,Yes,Negative
+senior,Male,No,Yes,No,No,No,No,Yes,Yes,No,No,No,Yes,No,No,Negative
+senior,Male,No,No,Yes,Yes,Yes,No,Yes,Yes,No,Yes,No,Yes,Yes,No,Negative
+senior,Female,No,No,No,No,No,Yes,No,Yes,No,Yes,No,No,Yes,No,Negative
+senior,Female,No,No,No,Yes,No,No,Yes,Yes,No,Yes,No,Yes,Yes,Yes,Negative
+older adult,Female,No,No,No,Yes,No,No,Yes,Yes,No,Yes,No,No,Yes,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+older adult,Male,No,No,No,Yes,No,No,No,Yes,No,Yes,No,No,Yes,No,Negative
+senior,Male,No,No,No,Yes,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Negative
+older adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,Yes,No,Negative
+senior,Female,Yes,Yes,Yes,Yes,No,No,Yes,No,No,No,Yes,No,No,Yes,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,Yes,No,No,No,Positive
+senior,Female,Yes,Yes,Yes,No,Yes,No,No,Yes,No,Yes,Yes,No,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,Yes,No,No,No,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,Yes,Yes,No,Yes,Positive
+adult,Female,Yes,Yes,No,Yes,No,No,Yes,No,No,No,No,No,No,No,Positive
+older adult,Female,No,No,Yes,Yes,Yes,No,No,No,No,No,No,Yes,No,No,Positive
+senior,Female,Yes,No,No,No,Yes,No,No,No,Yes,No,No,No,Yes,No,Positive
+senior,Male,No,Yes,No,Yes,Yes,No,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,Positive
+senior,Male,Yes,Yes,No,Yes,Yes,No,Yes,No,No,No,Yes,Yes,No,No,Positive
+older adult,Male,Yes,Yes,Yes,Yes,No,Yes,No,No,No,No,No,No,No,No,Positive
+senior,Male,Yes,Yes,No,Yes,Yes,No,Yes,No,Yes,No,Yes,Yes,No,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,No,Yes,Yes,No,Positive
+adult,Male,Yes,No,Yes,No,No,Yes,No,Yes,Yes,No,No,No,Yes,No,Positive
+older adult,Male,No,Yes,Yes,Yes,No,No,Yes,Yes,Yes,Yes,No,No,No,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,Yes,Yes,Yes,No,Yes,Positive
+adult,Male,No,No,No,No,No,Yes,No,No,Yes,Yes,No,No,No,Yes,Positive
+older adult,Male,No,No,No,Yes,Yes,No,No,No,Yes,No,No,Yes,No,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,No,Yes,Yes,Yes,No,No,Positive
+adult,Male,No,Yes,No,No,No,Yes,No,No,No,No,No,No,Yes,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,No,Yes,No,Yes,No,Yes,No,Yes,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,Yes,No,No,No,Positive
+older adult,Male,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,No,No,No,No,Yes,Positive
+adult,Male,No,No,No,Yes,No,No,No,No,No,Yes,No,No,Yes,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Positive
+older adult,Male,Yes,Yes,No,Yes,No,No,Yes,Yes,No,No,No,No,No,No,Positive
+older adult,Male,Yes,Yes,No,Yes,No,Yes,Yes,Yes,No,No,No,No,No,No,Positive
+senior,Male,Yes,No,No,No,No,No,Yes,No,No,No,Yes,No,Yes,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,No,Yes,Yes,Yes,Positive
+adult,Male,Yes,No,Yes,No,No,No,No,No,No,No,Yes,No,Yes,No,Positive
+young,Female,Yes,No,Yes,Yes,Yes,No,No,No,No,Yes,No,No,No,No,Positive
+senior,Female,No,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,Positive
+older adult,Female,Yes,Yes,Yes,No,Yes,No,No,No,No,Yes,Yes,No,No,No,Positive
+older adult,Female,No,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,No,Yes,No,Yes,Yes,Yes,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,No,No,Yes,Yes,No,No,Yes,Yes,No,No,Positive
+older adult,Female,No,No,Yes,Yes,No,No,Yes,Yes,No,Yes,Yes,No,No,No,Positive
+senior,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,No,Yes,Yes,Yes,No,Yes,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Positive
+young,Female,No,No,No,No,No,No,Yes,No,No,No,Yes,Yes,No,No,Positive
+senior,Female,Yes,Yes,No,Yes,Yes,No,Yes,Yes,No,Yes,Yes,No,No,No,Positive
+older adult,Female,No,No,No,No,Yes,No,Yes,Yes,No,No,Yes,No,No,No,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,No,No,Yes,No,No,Yes,Yes,Yes,No,No,Positive
+senior,Male,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,Yes,No,No,No,Positive
+older adult,Male,No,No,No,No,No,No,No,Yes,No,No,No,No,Yes,No,Negative
+older adult,Male,No,No,No,No,Yes,Yes,No,No,No,No,No,No,No,No,Negative
+senior,Male,No,No,No,No,Yes,No,Yes,No,No,No,No,Yes,No,No,Negative
+senior,Male,Yes,No,No,No,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+older adult,Male,No,No,No,Yes,No,Yes,No,Yes,No,Yes,No,No,Yes,No,Negative
+adult,Male,No,No,Yes,No,No,No,No,No,No,No,No,No,No,Yes,Negative
+older adult,Male,No,No,No,No,No,No,No,Yes,No,No,No,No,Yes,No,Negative
+older adult,Male,No,No,No,No,Yes,Yes,No,No,No,No,No,No,No,No,Negative
+senior,Male,No,No,No,No,Yes,No,Yes,No,No,No,No,Yes,No,No,Negative
+senior,Male,Yes,No,No,No,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+older adult,Male,No,No,No,Yes,No,Yes,No,Yes,No,Yes,No,No,Yes,No,Negative
+adult,Male,No,No,Yes,No,No,No,No,No,No,No,No,No,No,Yes,Negative
+senior,Male,No,No,No,Yes,No,No,No,Yes,No,Yes,No,Yes,Yes,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+older adult,Male,No,No,No,Yes,No,No,No,Yes,No,Yes,No,No,Yes,No,Negative
+senior,Male,No,No,No,Yes,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Negative
+older adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,Yes,No,Negative
+senior,Female,Yes,Yes,Yes,Yes,No,No,Yes,No,No,No,Yes,No,No,Yes,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,Yes,No,No,No,Positive
+senior,Female,Yes,Yes,Yes,No,Yes,No,No,Yes,No,Yes,Yes,No,No,No,Positive
+adult,Female,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,Yes,No,No,No,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,Yes,Yes,No,Yes,Positive
+older adult,Female,No,No,No,Yes,No,No,Yes,Yes,No,Yes,No,No,Yes,No,Negative
+young,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+older adult,Male,No,No,No,Yes,No,No,No,Yes,No,Yes,No,No,Yes,No,Negative
+senior,Male,No,No,No,Yes,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Negative
+senior,Male,No,No,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Yes,Yes,No,Negative
+older adult,Male,Yes,No,Yes,Yes,No,Yes,No,Yes,No,Yes,No,No,Yes,Yes,Negative
+adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+older adult,Male,No,No,No,Yes,No,Yes,No,Yes,No,No,No,No,Yes,No,Negative
+senior,Male,No,No,No,Yes,No,No,Yes,Yes,No,Yes,No,Yes,Yes,No,Negative
+older adult,Male,No,No,No,No,No,No,No,No,Yes,No,Yes,No,No,Yes,Negative
+senior,Female,Yes,Yes,No,Yes,Yes,No,Yes,Yes,No,Yes,Yes,No,No,No,Positive
+senior,Male,No,No,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Yes,Yes,No,Negative
+senior,Male,Yes,No,Yes,No,No,Yes,No,Yes,Yes,No,No,No,Yes,No,Positive
+senior,Male,No,No,No,No,Yes,No,Yes,No,No,No,No,Yes,No,No,Negative
+senior,Male,Yes,No,No,No,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Negative
+older adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+senior,Male,No,No,No,Yes,No,Yes,No,Yes,No,Yes,No,No,Yes,No,Negative
+senior,Male,No,No,Yes,No,No,No,No,No,No,No,No,No,No,Yes,Negative
+senior,Male,No,No,No,Yes,No,No,No,Yes,No,Yes,No,Yes,Yes,No,Negative
+senior,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
+senior,Male,No,No,No,Yes,No,No,No,Yes,No,Yes,No,No,Yes,No,Negative
+senior,Male,No,No,No,Yes,Yes,No,Yes,Yes,No,Yes,Yes,Yes,Yes,No,Negative
+older adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,Yes,No,Negative
+senior,Female,Yes,Yes,Yes,Yes,No,No,Yes,No,No,No,Yes,No,No,Yes,Positive
+senior,Female,Yes,Yes,Yes,Yes,Yes,No,No,No,No,No,Yes,No,No,No,Positive
+adult,Female,Yes,Yes,Yes,No,Yes,No,No,Yes,No,Yes,Yes,No,No,No,Positive
+older adult,Female,Yes,Yes,Yes,Yes,Yes,No,No,Yes,Yes,Yes,Yes,No,No,No,Positive
+senior,Female,Yes,Yes,Yes,Yes,Yes,No,Yes,No,No,No,Yes,Yes,No,Yes,Positive
+adult,Female,No,No,No,Yes,No,No,Yes,Yes,No,Yes,No,No,Yes,No,Negative
+older adult,Male,No,No,No,No,No,No,No,No,No,No,No,No,No,No,Negative
