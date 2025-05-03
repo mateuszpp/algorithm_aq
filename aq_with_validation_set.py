@@ -283,7 +283,6 @@ def main():
     seed = args.seed
     validation_sets_number = args.validation_sets_number
     validation_sets = np.array_split(validation_dataset, validation_sets_number)
-    print(validation_sets[0])
 
     print("\n" + "-" * 80 + "    OBLICZENIA    " + "-" * 80 + "\n")
 
@@ -291,7 +290,7 @@ def main():
     pos_set = positive_examples(training_dataset, seed) # zestaw pozytywnych przykładów, który jest aktualizowany po iteracji poprzez usunięcie pokrytych przykładów
     pos_set_mark = pos_set
 
-    neg_set_mark_test = negative_examples(test_dataset, seed, args.hamming_distance_ratio) # zestaw wszystkich negatywnych przykładów
+    neg_set_mark_test = negative_examples(test_dataset, seed, 1) # zestaw wszystkich negatywnych przykładów
     pos_set_test = positive_examples(test_dataset, seed) # zestaw pozytywnych przykładów, który jest aktualizowany po iteracji poprzez usunięcie pokrytych przykładów
     pos_set_mark_test = pos_set_test
 
