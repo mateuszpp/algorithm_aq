@@ -294,7 +294,7 @@ def main():
     print("\n" + "-" * 75 + "    TESTY POKRYCIA    " + "-" * 75 + "\n")
     check_aq_algorithm(neg_set_mark, pos_set_mark, set_of_rules)
 
-    print("\n" + "-" * 70 + "    TESTY NA ZBIORZE TRENINGOWYM   " + "-" * 70 + "\n")
+    print("\n" + "-" * 70 + "    TESTY NA ZBIORZE TESTOWYM   " + "-" * 70 + "\n")
     FP, FN = check_aq_algorithm(neg_set_mark_test, pos_set_mark_test, set_of_rules)
     print("\nWYNIKI:")
     print(f"Dokładność: {accuracy(FN, FP, len(test_dataset))}%")
