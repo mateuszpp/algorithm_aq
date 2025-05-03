@@ -171,7 +171,7 @@ def evaluate_complexes(complexes, positive_examples, negative_examples, m):
     # Nadaj ocenę każdemu kompleksowi 
     scored = []
     for idx, c in enumerate(complexes):
-        score = (f1(c)) # tutaj można dodać , f2(c)
+        score = (f1(c) + f2(c)) # tutaj można dodać , f2(c)
         scored.append((score, idx, c))  # Dodaj indeks jako tie-breaker
 
     # Sortuj malejąco wg score, a przy remisie preferuj wyższy indeks (czyli późniejszy kompleks)

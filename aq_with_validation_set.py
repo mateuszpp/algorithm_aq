@@ -20,6 +20,10 @@ def parse_arguments():
         help="Odsetek liczby przykładów treningowych z całego zbioru."
     )
     parser.add_argument(
+        "-v", "--validation-set-ratio", type=float, required=True,
+        help="Odsetek liczby przykładów walidacyjnych z całego zbioru."
+    )
+    parser.add_argument(
         "-m", type=int, required=True,
         help="Liczba m najlepszych kompleksów."
     )
@@ -30,11 +34,13 @@ def parse_arguments():
     return parser.parse_args()
 
 
-def split_dataset(dataset, r): # dzielenie datasetu na zbiór treningowy i testowy
-    split_index = int(r * len(dataset))
-    train_data = dataset[:split_index]
-    test_data = dataset[split_index:]
-    return train_data, test_data
+def split_dataset(dataset, r, v): # dzielenie datasetu na zbiór treningowy, walidacyjny i testowy
+    split_index1 = int(r * len(dataset))
+    split_index2 = int((r+v) * len(dataset))
+    train_data = dataset[:split_index1]
+    validation_data = dataset[split_index1:split_index2]
+    test_data = dataset[split_index2:]
+    return train_data, validation_data, test_data
 
 def initialize_general_complex(df):
     general_rule = {}
@@ -169,7 +175,7 @@ def evaluate_complexes(complexes, positive_examples, negative_examples, m):
     # Nadaj ocenę każdemu kompleksowi 
     scored = []
     for idx, c in enumerate(complexes):
-        score = (f1(c)) # tutaj można dodać , f2(c)
+        score = (f1(c) + f2(c)) # tutaj można dodać , f2(c)
         scored.append((score, idx, c))  # Dodaj indeks jako tie-breaker
 
     # Sortuj malejąco wg score, a przy remisie preferuj wyższy indeks (czyli późniejszy kompleks)
@@ -240,7 +246,7 @@ def main():
     
     args = parse_arguments()
     df = pd.read_csv(args.file)
-    training_dataset, test_dataset = split_dataset(df, args.training_set_ratio)
+    training_dataset, validation_dataset, test_dataset = split_dataset(df, args.training_set_ratio, args.validation_set_ratio)
     seed = args.seed
 
     print("\n" + "-" * 80 + "    OBLICZENIA    " + "-" * 80 + "\n")
@@ -272,7 +278,7 @@ def main():
 
             neg_set = check_coverage_of_negative_examples(neg_set,complex)
 
-            complex = evaluate_complexes(complex, pos_set, neg_set_mark, args.m) # ocena
+            complex = evaluate_complexes(complex, pos_set, validation_dataset, args.m) # ocena
 
         complex = evaluate_complexes(complex, pos_set, neg_set_mark, args.m)
         print('Dodanie zasady do set of rules')
