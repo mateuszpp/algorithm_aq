@@ -3,8 +3,6 @@ import copy
 from tabulate import tabulate
 import argparse
 
-
-
 def parse_arguments():
     parser = argparse.ArgumentParser(
         description="Algorytm AQ do generowania reguł z pliku CSV"
