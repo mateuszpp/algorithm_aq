@@ -5,7 +5,6 @@ import argparse
 
 
 
-
 def parse_arguments():
     parser = argparse.ArgumentParser(
         description="Algorytm AQ do generowania reguł z pliku CSV"
@@ -66,8 +65,8 @@ def covers(rule, example):
     '''
     for attr in rule:
         if example[attr] not in rule[attr]:
-            return False
-    return True
+            return False # nie pokrywa
+    return True # pokrywa
 
 
 
@@ -77,7 +76,7 @@ def check_coverage_of_negative_examples(neg_set, complexes):
         if any(covers(rule, example) for rule in complexes):
             filtered_rows.append(example)
 
-    return pd.DataFrame(filtered_rows)
+    return pd.DataFrame(filtered_rows) # zwraca listę niewyeliminowanych negatywnych przykładów
 
 
 
@@ -87,7 +86,7 @@ def check_coverage_of_positive_examples(pos_set, complexes):
         if not any(covers(rule, example) for rule in complexes):
             filtered_rows.append(example)
 
-    return pd.DataFrame(filtered_rows)
+    return pd.DataFrame(filtered_rows) # zwraca listę jeszcze niepokrytych pozytywnych przykładów
 
 
 
@@ -141,7 +140,7 @@ def evaluate_complexes(complexes, positive_examples, negative_examples, m=2):
     # Nadaj ocenę każdemu kompleksowi 
     scored = []
     for idx, c in enumerate(complexes):
-        score = (f1(c))
+        score = (f1(c)) # tutaj można dodać , f2(c)
         scored.append((score, idx, c))  # Dodaj indeks jako tie-breaker
 
     # Sortuj malejąco wg score, a przy remisie preferuj wyższy indeks (czyli późniejszy kompleks)
@@ -187,12 +186,14 @@ def check_aq_algorithm(neg_set, pos_set, complexes):
     if x.empty:
         print('wszystkie negatywne przykłady są wykluczone')
     else:
-        print(x)
+        print(f'niewykluczone przykłądy negatywne {x}')
 
     if y.empty:
         print('wszystkie pozytywne przykłady zawierają się w zestawie reguł')
     else:
-        print(y)
+        print(f'niepokryte przykłady pozytywne {y}')
+
+
 
 def main():
     '''
@@ -203,11 +204,10 @@ def main():
     df = pd.read_csv(args.file)
     seed = args.seed
 
-    print(df['class'])
     neg_set_mark = negative_examples(df, seed) # zestaw wszystkich negatywnych przykładów
     pos_set = positive_examples(df, seed) # zestaw pozytywnych przykładów, który jest aktualizowany po iteracji poprzez usunięcie pokrytych przykładów
     pos_set_mark = pos_set
-    #pos_set_mark = positive_examples(seed) # zestaw wszystkich pozytywnych przykładów
+    
     set_of_rules = []
 
     while not pos_set.empty : # dopóki zbiór reguł nie pokrywa wszystkich przykładów
