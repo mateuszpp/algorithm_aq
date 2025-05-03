@@ -1,5 +1,7 @@
 import pandas as pd
 import copy
+
+from numpy import hamming
 from tabulate import tabulate
 import argparse
 
@@ -17,9 +19,26 @@ def parse_arguments():
         "-s", "--seed", type=str , required=True,
         help="Klasa pozytywna, która ma być analizowana."
     )
+    parser.add_argument(
+        "-r", "--training-set-ratio", type=float, required=True,
+        help="Odsetek liczby przykładów treningowych z całego zbioru."
+    )
+    parser.add_argument(
+        "-m", type=int, required=True,
+        help="Liczba m najlepszych kompleksów."
+    )
+    parser.add_argument(
+        "-t", "--hamming-distance-ratio", type=float, required=True,
+        help="Maksymalna odległość Hamminga między ziarnem pozytywnym a negatywnym względem liczby atrybutów."
+    )
     return parser.parse_args()
 
 
+def split_dataset(dataset, r): # dzielenie datasetu na zbiór treningowy i testowy
+    split_index = int(r * len(dataset))
+    train_data = dataset[:split_index]
+    test_data = dataset[split_index:]
+    return train_data, test_data
 
 def initialize_general_complex(df):
     general_rule = {}
@@ -28,7 +47,13 @@ def initialize_general_complex(df):
             general_rule[attr] = set(df[attr].unique())
     return [general_rule]  # zwracamy listę reguł (na start jedna)
 
-
+def hamming_distance(pos_seed, neg_seed):
+    distance = 0
+    for attr in pos_seed.index:
+        if attr != 'class':
+            if pos_seed[attr] != neg_seed[attr]:
+                distance += 1
+    return distance
 
 def positive_examples(df, seed): # zwraca dataset przykładów klasy pozytywnej
     # dopasuj typ argumentu seed do typu danych w kolumnie 'class'
@@ -38,13 +63,21 @@ def positive_examples(df, seed): # zwraca dataset przykładów klasy pozytywnej
     return df[df['class'] == seed]
 
 
-
-def negative_examples(df, seed): # zwraca dataset przykładów klasy negatywnej
+def negative_examples(df, seed, t): # zwraca dataset przykładów klasy negatywnej
     class_type = df['class'].dtype
     if pd.api.types.is_numeric_dtype(class_type):
         seed = int(seed)
-    return df[df['class'] != seed]
+    num_attributes = df.shape[1] - 1
+    threshold = t * num_attributes
+    neg_examples = df[df['class'] != seed]
+    filtered_examples = []
+    pos_seed = df[df['class'] == seed].iloc[0]
+    for _, neg_seed in neg_examples.iterrows():
+        distance = hamming_distance(pos_seed, neg_seed)
+        if distance <= threshold:
+            filtered_examples.append(neg_seed)
 
+    return pd.DataFrame(filtered_examples)
 
 
 def return_positive_seed(pos_set):
@@ -110,20 +143,20 @@ def generate_complex(compared_seeds, neg_seed, complex):
     '''
     final_complex = []
 
-    for comp in range(len(complex)):    
+    for comp in range(len(complex)):
 
         for attr in range(len(compared_seeds)):
             temp_complex = copy.deepcopy(complex)
             val = temp_complex[comp][compared_seeds[attr]]
-            
+
             val.discard(neg_seed[compared_seeds[attr]])
-            
+
             final_complex.append(temp_complex[comp])
     return final_complex
 
 
 
-def evaluate_complexes(complexes, positive_examples, negative_examples, m=2):
+def evaluate_complexes(complexes, positive_examples, negative_examples, m):
     '''
     funkcja oceny kompleksów określona jako liczba pokrywanych przez nie 
     przykładów o kategorii identycznej z kategorią ziarna nie pokrytych 
@@ -184,16 +217,25 @@ def check_aq_algorithm(neg_set, pos_set, complexes):
     y = check_coverage_of_positive_examples(pos_set, complexes)
 
     if x.empty:
-        print('wszystkie negatywne przykłady są wykluczone')
+        print('Wszystkie negatywne przykłady są wykluczone')
     else:
-        print(f'niewykluczone przykłądy negatywne {x}')
+        print(f'Niewykluczone przykłady negatywne (FP): {len(x)}')
 
     if y.empty:
-        print('wszystkie pozytywne przykłady zawierają się w zestawie reguł')
+        print('Wszystkie pozytywne przykłady zawierają się w zestawie reguł')
     else:
-        print(f'niepokryte przykłady pozytywne {y}')
+        print(f'Niepokryte przykłady pozytywne (FN): {len(y)}')
 
+    return len(x), len(y)
 
+def accuracy(FN, FP, dataset_size):
+    return round(((dataset_size - (FN + FP)) / dataset_size) * 100, 2)
+
+def recall(TP, FN):
+    return round(TP / (TP + FN) * 100, 2)
+
+def precision(TP, FP):
+    return round(TP / (TP + FP) * 100, 2)
 
 def main():
     '''
@@ -202,17 +244,24 @@ def main():
     
     args = parse_arguments()
     df = pd.read_csv(args.file)
+    training_dataset, test_dataset = split_dataset(df, args.training_set_ratio)
     seed = args.seed
 
-    neg_set_mark = negative_examples(df, seed) # zestaw wszystkich negatywnych przykładów
-    pos_set = positive_examples(df, seed) # zestaw pozytywnych przykładów, który jest aktualizowany po iteracji poprzez usunięcie pokrytych przykładów
+    print("\n" + "-" * 80 + "    OBLICZENIA    " + "-" * 80 + "\n")
+
+    neg_set_mark = negative_examples(training_dataset, seed, args.hamming_distance_ratio) # zestaw wszystkich negatywnych przykładów
+    pos_set = positive_examples(training_dataset, seed) # zestaw pozytywnych przykładów, który jest aktualizowany po iteracji poprzez usunięcie pokrytych przykładów
     pos_set_mark = pos_set
-    
+
+    neg_set_mark_test = negative_examples(test_dataset, seed, args.hamming_distance_ratio) # zestaw wszystkich negatywnych przykładów
+    pos_set_test = positive_examples(test_dataset, seed) # zestaw pozytywnych przykładów, który jest aktualizowany po iteracji poprzez usunięcie pokrytych przykładów
+    pos_set_mark_test = pos_set_test
+
     set_of_rules = []
 
     while not pos_set.empty : # dopóki zbiór reguł nie pokrywa wszystkich przykładów
         
-        complex = initialize_general_complex(df)
+        complex = initialize_general_complex(training_dataset)
         pos_seed = return_positive_seed(pos_set)
         print('pos seed')
         print(pos_seed)
@@ -227,23 +276,32 @@ def main():
 
             neg_set = check_coverage_of_negative_examples(neg_set,complex)
 
-            complex = evaluate_complexes(complex, pos_set, neg_set_mark) # ocena
+            complex = evaluate_complexes(complex, pos_set, neg_set_mark, args.m) # ocena
 
-        complex = evaluate_complexes(complex, pos_set, neg_set_mark, 1)
-        print('dodanie zasady do set of rules')
+        complex = evaluate_complexes(complex, pos_set, neg_set_mark, args.m)
+        print('Dodanie zasady do set of rules')
         print(complex)
         set_of_rules.extend(complex)
         pos_set = check_coverage_of_positive_examples(pos_set, complex) # zwraca niepokryte przykłady
-        print('zbiór pozytywnych przykładów, które pozostały :')
+        print('Zbiór pozytywnych przykładów, które pozostały :')
         print(pos_set)
     
-    #print_rules(set_of_rules)
+   # print_rules(set_of_rules)
+    print("\n" + "-" * 80 + "    UZYSKANE REGUŁY    " + "-" * 80 + "\n")
     print(set_of_rules)
-    print(f'liczba zasad : {len(set_of_rules)}')
 
+    print("\n" + "-" * 80 + "    LICZBA REGUŁ    " + "-" * 80 + "\n")
+    print(f'Liczba zasad : {len(set_of_rules)}')
+
+    print("\n" + "-" * 75 + "    TESTY POKRYCIA    " + "-" * 75 + "\n")
     check_aq_algorithm(neg_set_mark, pos_set_mark, set_of_rules)
 
-        
+    print("\n" + "-" * 70 + "    TESTY NA ZBIORZE TRENINGOWYM   " + "-" * 70 + "\n")
+    FP, FN = check_aq_algorithm(neg_set_mark_test, pos_set_mark_test, set_of_rules)
+    print("\nWYNIKI:")
+    print(f"Dokładność: {accuracy(FN, FP, len(test_dataset))}%")
+    print(f"Czułość: {recall(len(pos_set_mark_test) - FN, FN)}%")
+    print(f"Precyzja: {recall(len(pos_set_mark_test) - FN, FP)}%")
 
 main()
 
