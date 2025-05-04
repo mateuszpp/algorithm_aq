@@ -20,6 +20,10 @@ def parse_arguments(): # pobranie argumentów z konsoli
         help="Odsetek liczby przykładów treningowych z całego zbioru."
     )
     parser.add_argument(
+        "-rt", "--testing-set-ratio", type=float, required=True,
+        help="Odsetek liczby przykładów testowych z całego zbioru."
+    )
+    parser.add_argument(
         "-m", type=int, required=True,
         help="Liczba m najlepszych kompleksów."
     )
@@ -52,10 +56,11 @@ def find_conflicts(df): # sprawdzanie konfliktów w datasecie
     else:
         print("Brak sprzecznych wierszy.")
 
-def split_dataset(dataset, r): # dzielenie datasetu na zbiór treningowy i testowy
+def split_dataset(dataset, r, rt): # dzielenie datasetu na zbiór treningowy i testowy
     split_index = int(r * len(dataset)) # obliczenie, w którym miejscu ma nastąpić podział zbioru
+    split_index2 = int((r + rt) * len(dataset))  # obliczenie, w którym miejscu ma nastąpić podział zbioru testowego
     train_data = dataset[:split_index] # utworzenie datasetu treningowego
-    test_data = dataset[split_index:] # utworzenie datasetu testowego
+    test_data = dataset[split_index:split_index2] # utworzenie datasetu testowego
     return train_data, test_data
 
 def initialize_general_complex(df): # generowanie najbardziej ogólnej reguły
@@ -206,7 +211,7 @@ def main():
     args = parse_arguments() # pobranie argumentów z konsoli
     df = pd.read_csv(args.file).sample(frac = 1) # odczytanie i przetasowanie wierszy datasetu
     find_conflicts(df) # szukanie konfliktów w datasecie
-    training_dataset, test_dataset = split_dataset(df, args.training_set_ratio) # podzielenie datasetu na zbiór treningowy i testowy
+    training_dataset, test_dataset = split_dataset(df, args.training_set_ratio, args.testing_set_ratio) # podzielenie datasetu na zbiór treningowy i testowy
     seed = args.seed # pobranie etykiety ziarna pozytywnego z konsoli
 
     print("\n" + "-" * 80 + "    OBLICZENIA    " + "-" * 80 + "\n")

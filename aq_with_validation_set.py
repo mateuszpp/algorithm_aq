@@ -25,6 +25,10 @@ def parse_arguments(): # pobranie argumentów z konsoli
         help="Odsetek liczby przykładów walidacyjnych z całego zbioru."
     )
     parser.add_argument(
+        "-rt", "--testing-set-ratio", type=float, required=True,
+        help="Odsetek liczby przykładów testowych z całego zbioru."
+    )
+    parser.add_argument(
         "-vs", "--validation-sets-number", type=float, required=True,
         help="Liczba podzbiorów walidacyjnych."
     )
@@ -61,12 +65,13 @@ def find_conflicts(df): # sprawdzanie konfliktów w datasecie
     else:
         print("Brak sprzecznych wierszy.")
 
-def split_dataset(dataset, r, v): # dzielenie datasetu na zbiór treningowy, walidacyjny i testowy
+def split_dataset(dataset, r, v, rt): # dzielenie datasetu na zbiór treningowy, walidacyjny i testowy
     split_index1 = int(r * len(dataset)) # obliczenie, w którym miejscu ma nastąpić podział zbioru treningowego
     split_index2 = int((r+v) * len(dataset)) # obliczenie, w którym miejscu ma nastąpić podział zbioru walidacyjnego
+    split_index3 = int((r + v + rt) * len(dataset))  # obliczenie, w którym miejscu ma nastąpić podział zbioru testowego
     train_data = dataset[:split_index1] # utworzenie datasetu treningowego
     validation_data = dataset[split_index1:split_index2] # utworzenie datasetu walidacyjnego
-    test_data = dataset[split_index2:] # utworzenie datasetu testowego
+    test_data = dataset[split_index2:split_index3] # utworzenie datasetu testowego
     return train_data, validation_data, test_data
 
 def initialize_general_complex(df): # generowanie najbardziej ogólnej reguły
@@ -224,7 +229,7 @@ def main():
     args = parse_arguments() # pobranie argumentów z konsoli
     df = pd.read_csv(args.file).sample(frac = 1) # odczytanie i przetasowanie wierszy datasetu
     find_conflicts(df) # szukanie konfliktów w datasecie
-    training_dataset, validation_dataset, test_dataset = split_dataset(df, args.training_set_ratio, args.validation_set_ratio)  # podzielenie datasetu na zbiór treningowy, walidacyjny i testowy
+    training_dataset, validation_dataset, test_dataset = split_dataset(df, args.training_set_ratio, args.validation_set_ratio, args.testing_set_ratio)  # podzielenie datasetu na zbiór treningowy, walidacyjny i testowy
     seed = args.seed # pobranie etykiety ziarna pozytywnego z konsoli
     validation_sets_number = args.validation_sets_number # pobranie liczby podzbiorów walidaycjnych z konsoli
     validation_sets = np.array_split(validation_dataset, validation_sets_number) # podzielenie zbioru walidaycjnego na podzbiory
