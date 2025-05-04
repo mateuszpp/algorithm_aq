@@ -4,7 +4,7 @@ import copy
 from tabulate import tabulate
 import argparse
 
-def parse_arguments():
+def parse_arguments(): # pobranie argumentów z konsoli
     parser = argparse.ArgumentParser(
         description="Algorytm AQ do generowania reguł z pliku CSV"
     )
@@ -62,105 +62,86 @@ def find_conflicts(df): # sprawdzanie konfliktów w datasecie
         print("Brak sprzecznych wierszy.")
 
 def split_dataset(dataset, r, v): # dzielenie datasetu na zbiór treningowy, walidacyjny i testowy
-    split_index1 = int(r * len(dataset))
-    split_index2 = int((r+v) * len(dataset))
-    train_data = dataset[:split_index1]
-    validation_data = dataset[split_index1:split_index2]
-    test_data = dataset[split_index2:]
+    split_index1 = int(r * len(dataset)) # obliczenie, w którym miejscu ma nastąpić podział zbioru treningowego
+    split_index2 = int((r+v) * len(dataset)) # obliczenie, w którym miejscu ma nastąpić podział zbioru walidacyjnego
+    train_data = dataset[:split_index1] # utworzenie datasetu treningowego
+    validation_data = dataset[split_index1:split_index2] # utworzenie datasetu walidacyjnego
+    test_data = dataset[split_index2:] # utworzenie datasetu testowego
     return train_data, validation_data, test_data
 
-def initialize_general_complex(df):
+def initialize_general_complex(df): # generowanie najbardziej ogólnej reguły
     general_rule = {}
     for attr in df.columns:
-        if attr != 'class':  # pomijamy etykietę klasy
-            general_rule[attr] = set(df[attr].unique())
-    return [general_rule]  # zwracamy listę reguł (na start jedna)
+        if attr != 'class':  # pominięcie etykiety klasy
+            general_rule[attr] = set(df[attr].unique()) # dodanie wszystkich unikatowych wartości atrybutów
+    return [general_rule] # zwracanie listy reguł (na start jedna)
 
-def hamming_distance(pos_seed, neg_seed):
+def hamming_distance(pos_seed, neg_seed): # obliczanie odległości Hamminga między ziarnem pozytywnym i negatywnym
     distance = 0
     for attr in pos_seed.index:
         if attr != 'class':
             if pos_seed[attr] != neg_seed[attr]:
-                distance += 1
+                distance += 1 # zwiększanie odległości dla każdego różniącego się wartością atrybutu
     return distance
 
-def positive_examples(df, seed): # zwraca dataset przykładów klasy pozytywnej
-    # dopasuj typ argumentu seed do typu danych w kolumnie 'class'
-    class_type = df['class'].dtype
+def positive_examples(df, seed): # zwracanie datasetu przykładów klasy pozytywnej
+    class_type = df['class'].dtype # dopasowanie typu argumentu seed do typu danych w kolumnie 'class'
     if pd.api.types.is_numeric_dtype(class_type):
         seed = int(seed)
     return df[df['class'] == seed]
 
 
-def negative_examples(df, seed, t): # zwraca dataset przykładów klasy negatywnej
-    class_type = df['class'].dtype
+def negative_examples(df, seed, t): # zwracanie dataset przykładów klasy negatywnej z uzwględnieniem odległości Hamminga
+    class_type = df['class'].dtype # dopasowanie typu argumentu seed do typu danych w kolumnie 'class'
     if pd.api.types.is_numeric_dtype(class_type):
         seed = int(seed)
-    num_attributes = df.shape[1] - 1
-    threshold = t * num_attributes
+    num_attributes = df.shape[1] - 1 # obliczenie liczby atrybutów bez etykiety
+    threshold = t * num_attributes # obliczenie maksymalnej odległości Hamminga między ziarnem pozytywnym i negatywnym
     neg_examples = df[df['class'] != seed]
     filtered_examples = []
-    pos_seed = df[df['class'] == seed].iloc[0]
+    pos_seed = df[df['class'] == seed].iloc[0] # uzyskanie ziarna pozytywnego
     for _, neg_seed in neg_examples.iterrows():
-        distance = hamming_distance(pos_seed, neg_seed)
+        distance = hamming_distance(pos_seed, neg_seed) # obliczenie odległości Hamminga dla każdego ziarna negatywnego
         if distance <= threshold:
-            filtered_examples.append(neg_seed)
-
+            filtered_examples.append(neg_seed) # dodanie ziarna negatywnego do listy, gdy jego odległość Hamminga od ziarna pozytywnego jest niewiększa niż podana przez użytkownika
     return pd.DataFrame(filtered_examples)
 
-def negative_examples_validation(df, seed): # zwraca dataset przykładów klasy negatywnej
+def negative_examples_validation(df, seed): # zwracanie datasetu przykładów klasy negatywnej
     class_type = df['class'].dtype
     if pd.api.types.is_numeric_dtype(class_type):
         seed = int(seed)
     return df[df['class'] != seed]
 
-def return_positive_seed(pos_set):
+def return_positive_seed(pos_set): # zwrócenie ziarna pozytywnego
     pos_set = list(pos_set.to_dict(orient='records'))
     return pos_set[0]
 
-
-
-def return_negative_seed(neg_set):
+def return_negative_seed(neg_set): # zwrócenie ziarna negatywnego
     neg_set = list(neg_set.to_dict(orient='records'))
     return neg_set[0]
 
-
-
-def covers(rule, example):
-    '''
-    funkcja pomocnicza do funkcji check_coverage_[...]_examples
-    '''
+def covers(rule, example): # funkcja pomocnicza do funkcji check_coverage...
     for attr in rule:
-        if example[attr] not in rule[attr]:
+        if example[attr] not in rule[attr]: # sprawdzanie pokrycia atrybutów przykładu przez regułę
             return False # nie pokrywa
     return True # pokrywa
 
-
-
-def check_coverage_of_negative_examples(neg_set, complexes):
+def check_coverage_of_negative_examples(neg_set, complexes): # sprawdzanie pokrycia przykładów klasy negatywnej
     filtered_rows = []
-    for _, example in neg_set.iterrows():
+    for _, example in neg_set.iterrows(): # sprawdzanie pokrycia każdego przykładu przez reguły
         if any(covers(rule, example) for rule in complexes):
             filtered_rows.append(example)
 
-    return pd.DataFrame(filtered_rows) # zwraca listę niewyeliminowanych negatywnych przykładów
+    return pd.DataFrame(filtered_rows) # zwracanie listy niewyeliminowanych negatywnych przykładów
 
-
-
-def check_coverage_of_positive_examples(pos_set, complexes):
+def check_coverage_of_positive_examples(pos_set, complexes): # sprawdzanie pokrycia przykładów klasy pozytywnej
     filtered_rows = []
     for _, example in pos_set.iterrows():
         if not any(covers(rule, example) for rule in complexes):
             filtered_rows.append(example)
+    return pd.DataFrame(filtered_rows) # zwracanie listy jeszcze niepokrytych pozytywnych przykładów
 
-    return pd.DataFrame(filtered_rows) # zwraca listę jeszcze niepokrytych pozytywnych przykładów
-
-
-
-def compare_seeds(pos_seed, neg_seed):
-    '''
-    funkcja porównuje różnice pomiędzy ziarnem xs i xn oraz zwraca atrybuty, które się różnią
-    '''
+def compare_seeds(pos_seed, neg_seed): # porównanie ziaren pozytywnych i negatywnych oraz zwrócenie listy różniących się atrybutów
     differing_attrs = []
     for i, attr in enumerate(pos_seed):
         if attr == 'class':
@@ -169,161 +150,114 @@ def compare_seeds(pos_seed, neg_seed):
             differing_attrs.append(attr)  # index + name
     return differing_attrs
 
-
-
-def generate_complex(compared_seeds, neg_seed, complex):
-    '''
-    generuje nowe kompleksy zgodnie z zasadą gwiazdy
-    '''
+def generate_complex(compared_seeds, neg_seed, complex): # generowanie kompleksów zgodnie z zasadą gwiazdy
     final_complex = []
-
-    for comp in range(len(complex)):
-
-        for attr in range(len(compared_seeds)):
-            temp_complex = copy.deepcopy(complex)
-            val = temp_complex[comp][compared_seeds[attr]]
-
-            val.discard(neg_seed[compared_seeds[attr]])
-
+    for comp in range(len(complex)):  # iterowane po wszystkich kompleksach
+        for attr in range(len(compared_seeds)): # iterowanie po wszystkich atrybutach o wartościach różniących się
+            temp_complex = copy.deepcopy(complex) # kopiowanie oryginalnego kompleksu
+            val = temp_complex[comp][compared_seeds[attr]] # pobranie wartości atrybutów
+            val.discard(neg_seed[compared_seeds[attr]]) # usunięcie z kompleksu wartości przykładu negatywnego danego atrybutu
             final_complex.append(temp_complex[comp])
     return final_complex
 
-
-
-def evaluate_complexes(complexes, positive_examples, negative_examples, m):
-    '''
-    funkcja oceny kompleksów określona jako liczba pokrywanych przez nie 
-    przykładów o kategorii identycznej z kategorią ziarna nie pokrytych 
-    przez wygenerowane wcześniej reguły
-    '''
-    def f1(complex):
-        # Liczba pokrywanych pozytywnych przykładów
+def evaluate_complexes(complexes, positive_examples, negative_examples, m): # ocenianie kompleksów
+    def f1(complex): # zliczanie liczby pokrywanych przykładów pozytywnych
         return sum(covers(complex, ex) for _, ex in positive_examples.iterrows())
-
-    def f2(complex):
-        # Liczba NIEpokrywanych negatywnych przykładów
+    def f2(complex): # zliczanie liczby niepokrywanych przykładów negatywnych
         return sum(not covers(complex, ex) for _, ex in negative_examples.iterrows())
 
-    # Nadaj ocenę każdemu kompleksowi 
     scored = []
-    for idx, c in enumerate(complexes):
-        score = (f1(c) + f2(c)) # tutaj można dodać , f2(c)
-        scored.append((score, idx, c))  # Dodaj indeks jako tie-breaker
+    for idx, c in enumerate(complexes): # nadanie oceny każdemu kompleksowi
+        score = (f1(c) + f2(c))
+        scored.append((score, idx, c)) # dodanie indeksu jako tie-breaker
 
-    # Sortuj malejąco wg score, a przy remisie preferuj wyższy indeks (czyli późniejszy kompleks)
-    scored.sort(reverse=True, key=lambda x: (x[0], x[1]))
+    scored.sort(reverse=True, key=lambda x: (x[0], x[1])) # sortowanie malejąco wg score, a przy remisie preferowanie wyższego indeksu (czyli późniejszego kompleksu)
 
-    # Zwróć m najlepszych kompleksów
-    best = [c for _, _, c in scored[:m]]
+    best = [c for _, _, c in scored[:m]] # zwrócenie m najlepszych kompleksów
     return best
 
-
-
-def print_rules(rules):
-    """
-    Funkcja wypisująca wszystkie utworzone reguły w formie tabeli,
-    dynamicznie dostosowując się do nazw atrybutów.
-    """
+def print_rules(rules): # wypisanie utworzonych reguł w formie tabeli
     if not rules:
         print("Brak reguł do wyświetlenia.")
         return
 
-    # Zakładamy, że każda reguła to lista z jednym słownikiem
-    attribute_names = list(rules[0][0].keys())
-    headers = ["#"] + attribute_names + ["c(x)"]
+    attribute_names = list(rules[0][0].keys()) # każda reguła to lista z jednym słownikiem
+    headers = ["#"] + attribute_names + ["c(x)"] # tworzenie nagłówków kolumn
 
     table = []
     for i, rule in enumerate(rules, 1):
-        rule_dict = rule[0]  # Zakładamy, że complex to [reguła]
+        rule_dict = rule[0]
         row = [i]
         for attr in attribute_names:
-            row.append(" ∨ ".join(sorted(rule_dict.get(attr, []))))
-        row.append("0")  # Można dodać oznaczenie klasy lub c(x)
+            row.append(" ∨ ".join(sorted(rule_dict.get(attr, [])))) # dla każdego atrybutu pobieranie możliwych wartości i oddzielenie ich przez 'v'
+        row.append("0")
         table.append(row)
 
     print(tabulate(table, headers=headers, tablefmt="grid"))
 
+def check_aq_algorithm(neg_set, pos_set, complexes): # sprawdzanie pokrycia zbioru przykładów negatywnych i pozytywnych przez wygenerowanie reguły
+    covered_neg = check_coverage_of_negative_examples(neg_set, complexes)
+    not_covered_pos = check_coverage_of_positive_examples(pos_set, complexes)
 
-
-def check_aq_algorithm(neg_set, pos_set, complexes):
-    x = check_coverage_of_negative_examples(neg_set, complexes)
-
-    y = check_coverage_of_positive_examples(pos_set, complexes)
-
-    if x.empty:
+    if covered_neg.empty:
         print('Wszystkie negatywne przykłady są wykluczone')
     else:
-        print(f'Niewykluczone przykłady negatywne (FP): {len(x)}')
+        print(f'Niewykluczone przykłady negatywne (FP): {len(covered_neg)}')
 
-    if y.empty:
+    if not_covered_pos.empty:
         print('Wszystkie pozytywne przykłady zawierają się w zestawie reguł')
     else:
         print(f'Niepokryte przykłady pozytywne (FN): {len(y)}')
 
-    return len(x), len(y)
+    return len(covered_neg), len(not_covered_pos)
 
-def accuracy(FN, FP, dataset_size):
+def accuracy(FN, FP, dataset_size): # obliczenie dokładności
     return round(((dataset_size - (FN + FP)) / dataset_size) * 100, 2)
 
-def recall(TP, FN):
+def recall(TP, FN): # obliczenie czułości
     return round(TP / (TP + FN) * 100, 2)
 
-def precision(TP, FP):
+def precision(TP, FP): # obliczenie precyzji
     return round(TP / (TP + FP) * 100, 2)
 
 def main():
-    '''
-    główne wykonanie programu
-    '''
-    
-    args = parse_arguments()
-    df = pd.read_csv(args.file)
-    find_conflicts(df)
-    training_dataset, validation_dataset, test_dataset = split_dataset(df, args.training_set_ratio, args.validation_set_ratio)
-    seed = args.seed
-    validation_sets_number = args.validation_sets_number
-    validation_sets = np.array_split(validation_dataset, validation_sets_number)
+    args = parse_arguments() # pobranie argumentów z konsoli
+    df = pd.read_csv(args.file).sample(frac = 1) # odczytanie i przetasowanie wierszy datasetu
+    find_conflicts(df) # szukanie konfliktów w datasecie
+    training_dataset, validation_dataset, test_dataset = split_dataset(df, args.training_set_ratio, args.validation_set_ratio)  # podzielenie datasetu na zbiór treningowy, walidacyjny i testowy
+    seed = args.seed # pobranie etykiety ziarna pozytywnego z konsoli
+    validation_sets_number = args.validation_sets_number # pobranie liczby podzbiorów walidaycjnych z konsoli
+    validation_sets = np.array_split(validation_dataset, validation_sets_number) # podzielenie zbioru walidaycjnego na podzbiory
 
     print("\n" + "-" * 80 + "    OBLICZENIA    " + "-" * 80 + "\n")
 
-    neg_set_mark = negative_examples(training_dataset, seed, args.hamming_distance_ratio) # zestaw wszystkich negatywnych przykładów
-    pos_set = positive_examples(training_dataset, seed) # zestaw pozytywnych przykładów, który jest aktualizowany po iteracji poprzez usunięcie pokrytych przykładów
-    pos_set_mark = pos_set
-
-    neg_set_mark_test = negative_examples(test_dataset, seed, 1) # zestaw wszystkich negatywnych przykładów
-    pos_set_test = positive_examples(test_dataset, seed) # zestaw pozytywnych przykładów, który jest aktualizowany po iteracji poprzez usunięcie pokrytych przykładów
-    pos_set_mark_test = pos_set_test
+    neg_set_mark = negative_examples(training_dataset, seed, args.hamming_distance_ratio) # stworzenie zestawu wszystkich negatywnych przykładów zbioru treningowego
+    pos_set = positive_examples(training_dataset, seed)  # stworzenie zestawu pozytywnych przykładów zbioru treningowego, który jest aktualizowany po iteracji poprzez usunięcie pokrytych przykładów
+    pos_set_mark = pos_set # stworzenie zestawu pozytywnych przykładów zbioru treningowego
 
     set_of_rules = []
 
-    while not pos_set.empty : # dopóki zbiór reguł nie pokrywa wszystkich przykładów
-        
-        complex = initialize_general_complex(training_dataset)
-        pos_seed = return_positive_seed(pos_set)
-        print('pos seed')
-        print(pos_seed)
- 
-        neg_set = neg_set_mark
-        i = 0
-        while not neg_set.empty : # dopóki zbiór negatywny nie jest pusty
-            neg_seed = return_negative_seed(neg_set)
+    while not pos_set.empty : # wykonywanie pętli dopóki zbiór reguł nie pokrywa wszystkich przykładów
+        complex = initialize_general_complex(training_dataset) # wygenerwanie najbardziej ogólnej reguły
+        pos_seed = return_positive_seed(pos_set) # pobranie ziarna pozytywnego
+        neg_set = neg_set_mark # pobranie zbioru wszystkich przykładów negatywnych
+        i = 0 # inicjalizacja indeksu używanego podzbioru walidacyjnego
 
-            compared_seeds = compare_seeds(pos_seed, neg_seed)
+        while not neg_set.empty : # wykonywanie pętli dopóki zbiór przykładów negatywnych nie jest pusty
+            neg_seed = return_negative_seed(neg_set) # pobranie ziarna negatywnego
+            compared_seeds = compare_seeds(pos_seed, neg_seed) # porównanie ziarna pozytywnego i negatynwgo
+            complex = generate_complex(compared_seeds, neg_seed, complex) # wygenerowanie kompleksów
+            neg_set = check_coverage_of_negative_examples(neg_set,complex) # zwrócenie nowej listy niewyeliminowanych przykładów
+            pos_val_set = positive_examples(validation_sets[i], seed) # stworzenie zbiory pozytywnych przykładów walidacyjnych
+            neg_val_set = negative_examples_validation(validation_sets[i], seed) # stworzenie zbioru negatywnych przykładów walidacyjnych
+            complex = evaluate_complexes(complex, pos_val_set, neg_val_set, args.m) # ocena kompleksów na podstawie podzbioru walidacyjnego W_i i zwrócenie m najlepszych
+            i = i + 1 # przejście do następnego podzbioru walidacyjnego
 
-            complex = generate_complex(compared_seeds, neg_seed, complex)
-
-            neg_set = check_coverage_of_negative_examples(neg_set,complex)
-
-            pos_val_set = positive_examples(validation_sets[i], seed)
-            neg_val_set = negative_examples_validation(validation_sets[i], seed)
-            complex = evaluate_complexes(complex, pos_val_set, neg_val_set, args.m) # ocena
-            i = i + 1
-
-        complex = evaluate_complexes(complex, pos_set, neg_set_mark, args.m)
+        complex = evaluate_complexes(complex, pos_set, neg_set_mark, args.m) # ocena kompleksów i zwrócenie m najlepszych
         print('Dodanie zasady do set of rules')
         print(complex)
-        set_of_rules.extend(complex)
-        pos_set = check_coverage_of_positive_examples(pos_set, complex) # zwraca niepokryte przykłady
+        set_of_rules.extend(complex) # dodanie do zbioru reguł
+        pos_set = check_coverage_of_positive_examples(pos_set, complex) # zwrócenie niepokrytych przykładów klasy pozytywnej
         print('Zbiór pozytywnych przykładów, które pozostały :')
         print(pos_set)
     
@@ -338,13 +272,19 @@ def main():
     check_aq_algorithm(neg_set_mark, pos_set_mark, set_of_rules)
 
     print("\n" + "-" * 70 + "    TESTY NA ZBIORZE TESTOWYM   " + "-" * 70 + "\n")
-    FP, FN = check_aq_algorithm(neg_set_mark_test, pos_set_mark_test, set_of_rules)
+    neg_set_mark_test = negative_examples(test_dataset, seed, 1)  # stworzenie zestawu wszystkich negatywnych przykładów zbioru testowego
+    pos_set_mark_test = positive_examples(test_dataset, seed) # stworzenie zestawu pozytywnych przykładów zbioru testowego
+
+    FP, FN = check_aq_algorithm(neg_set_mark_test, pos_set_mark_test, set_of_rules) # zwrócenie liczby False Poistive'ów i False Negative'ów
+
     print("\nWYNIKI:")
     print(f"Dokładność: {accuracy(FN, FP, len(test_dataset))}%")
     print(f"Czułość: {recall(len(pos_set_mark_test) - FN, FN)}%")
     print(f"Precyzja: {recall(len(pos_set_mark_test) - FN, FP)}%")
 
-main()
+if __name__ == "__main__":
+    main()
+
 
 
 
