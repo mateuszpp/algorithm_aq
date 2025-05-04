@@ -207,7 +207,7 @@ def check_aq_algorithm(neg_set, pos_set, complexes): # sprawdzanie pokrycia zbio
     if not_covered_pos.empty:
         print('Wszystkie pozytywne przykłady zawierają się w zestawie reguł')
     else:
-        print(f'Niepokryte przykłady pozytywne (FN): {len(y)}')
+        print(f'Niepokryte przykłady pozytywne (FN): {len(not_covered_pos)}')
 
     return len(covered_neg), len(not_covered_pos)
 
