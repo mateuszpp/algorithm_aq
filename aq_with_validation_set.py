@@ -249,6 +249,7 @@ def main():
         i = 0 # inicjalizacja indeksu używanego podzbioru walidacyjnego
 
         while not neg_set.empty : # wykonywanie pętli dopóki zbiór przykładów negatywnych nie jest pusty
+            i = i + 1 # przejście do następnego podzbioru walidacyjnego
             neg_seed = return_negative_seed(neg_set) # pobranie ziarna negatywnego
             compared_seeds = compare_seeds(pos_seed, neg_seed) # porównanie ziarna pozytywnego i negatynwgo
             complex = generate_complex(compared_seeds, neg_seed, complex) # wygenerowanie kompleksów
@@ -256,9 +257,11 @@ def main():
             pos_val_set = positive_examples(validation_sets[i], seed) # stworzenie zbiory pozytywnych przykładów walidacyjnych
             neg_val_set = negative_examples_validation(validation_sets[i], seed) # stworzenie zbioru negatywnych przykładów walidacyjnych
             complex = evaluate_complexes(complex, pos_val_set, neg_val_set, args.m) # ocena kompleksów na podstawie podzbioru walidacyjnego W_i i zwrócenie m najlepszych
-            i = i + 1 # przejście do następnego podzbioru walidacyjnego
 
-        complex = evaluate_complexes(complex, pos_set, neg_set_mark, args.m) # ocena kompleksów i zwrócenie m najlepszych
+        i = i + 1 # przejście do następnego podzbioru walidacyjnego
+        pos_val_set = positive_examples(validation_sets[i], seed)  # stworzenie zbiory pozytywnych przykładów walidacyjnych
+        neg_val_set = negative_examples_validation(validation_sets[i], seed)  # stworzenie zbioru negatywnych przykładów walidacyjnych
+        complex = evaluate_complexes(complex, pos_val_set, neg_val_set, args.m) # ocena kompleksów i zwrócenie m najlepszych
         print('Dodanie zasady do set of rules')
         print(complex)
         set_of_rules.extend(complex) # dodanie do zbioru reguł
